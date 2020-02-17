@@ -1,3 +1,26 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/test.gd" type="Script" id=1]
+[ext_resource path="res://assets/icon.png" type="Texture" id=2]
 
 [node name="test" type="Node"]
+script = ExtResource( 1 )
+
+[node name="camera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="icon" type="Sprite" parent="."]
+position = Vector2( 506.014, 345.683 )
+texture = ExtResource( 2 )
+
+[node name="icon2" type="Sprite" parent="."]
+position = Vector2( 1565.67, 345.683 )
+texture = ExtResource( 2 )
+
+[node name="icon3" type="Sprite" parent="."]
+position = Vector2( 2268.77, 345.683 )
+texture = ExtResource( 2 )
