@@ -24,3 +24,4 @@ func _physics_process(delta):
 #game_starts:
 func go():
 	camera_move = true
+
