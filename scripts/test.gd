@@ -5,14 +5,15 @@ export var camera_speed : int = 300
 var dir : int = 1
 
 #vars_start:
-var camera_move : bool = false
+export var camera_move : bool = false
 
 #func_ready:
 func _ready():
 	
-	go()
+	pass
 
 #func_phyices:
+# warning-ignore:unused_argument
 func _physics_process(delta):
 	
 	if camera_move == true:
