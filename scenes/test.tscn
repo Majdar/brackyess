@@ -1,14 +1,44 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/icon.png" type="Texture" id=2]
+[ext_resource path="res://sd.tres" type="TileSet" id=3]
+[ext_resource path="res://scenes/camera_trans.gd" type="Script" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 2.58359
 
 [node name="test" type="Node"]
 script = ExtResource( 1 )
+camera_speed = 200
 
-[node name="camera" type="Camera2D" parent="."]
+[node name="camera_trans" type="KinematicBody2D" parent="."]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="camera" type="Camera2D" parent="camera_trans"]
+position = Vector2( 0, 37.3933 )
 anchor_mode = 0
 current = true
+process_mode = 0
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_trans"]
+shape = SubResource( 1 )
+
+[node name="tiles" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
