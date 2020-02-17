@@ -48,13 +48,25 @@ func _process(delta):
 #give_spawn_values:
 func value(used : int):
 	
+	if dif == 0:
+		how_many = 4
+	
+	elif dif == 1:
+		how_many = 3
+	
+	elif dif == 2:
+		how_many = 2
+	
+	elif dif == 3:
+		how_many = 1
+	
+	elif dif == 4:
+		how_many = 0
+	
 	randomize()
 	
 	if used == 1:
 		level = 2
-		
-		if dif == 0:
-			how_many = 4
 		
 		spawn()
 	
@@ -71,10 +83,6 @@ func value(used : int):
 			2:
 				level = 1
 		
-		
-		if dif == 0:
-			how_many = 4
-		
 		spawn()
 	
 	
@@ -90,19 +98,12 @@ func value(used : int):
 			2:
 				level = 4
 		
-		
-		if dif == 0:
-			how_many = 4
-		
 		spawn()
 	
 	
 	elif used == 4:
 		
 		level = 3
-		
-		if dif == 0:
-			how_many = 4
 		
 		spawn()
 
@@ -131,14 +132,17 @@ func spawn():
 			$again.start()
 			
 		elif were_am_i == 1:
-			#change_y:
-			y = 4
-			#set_cell:
-			tiles.set_cell(x, y, mid)
-			#change_x:
-			x += 1
+			if how_many != 0:
+				#change_y:
+				y = 4
+				#set_cell:
+				tiles.set_cell(x, y, mid)
+				#change_x:
+				x += 1
 			#change_were_am_i:
 			if spawnd == how_many:
+				were_am_i = 2
+			elif how_many == 0:
 				were_am_i = 2
 			spawnd = spawnd + 1
 			#again:
@@ -177,18 +181,21 @@ func spawn():
 			$again.start()
 			
 		elif were_am_i == 1:
-			#change_y:
-			y = 4
-			#set_2_cells:
-			tiles.set_cell(x, y, empty)
-			#change_y_again:
-			y = 3
-			#set_2_cells:
-			tiles.set_cell(x, y, mid)
-			#change_x:
-			x += 1
+			if how_many != 0:
+				#change_y:
+				y = 4
+				#set_2_cells:
+				tiles.set_cell(x, y, empty)
+				#change_y_again:
+				y = 3
+				#set_2_cells:
+				tiles.set_cell(x, y, mid)
+				#change_x:
+				x += 1
 			#change_were_am_i:
 			if spawnd == how_many:
+				were_am_i = 2
+			elif how_many == 0:
 				were_am_i = 2
 			spawnd = spawnd + 1
 			#again:
@@ -235,22 +242,25 @@ func spawn():
 			$again.start()
 			
 		elif were_am_i == 1:
-			#change_y:
-			y = 4
-			#set_2_cells:
-			tiles.set_cell(x, y, empty)
-			#change_y_again:
-			y = 3
-			#set_2_cells:
-			tiles.set_cell(x, y, empty)
-			#change_y_again2:
-			y = 2
-			#set_2_cells:
-			tiles.set_cell(x, y, mid)
-			#change_x:
-			x += 1
+			if how_many != 0:
+				#change_y:
+				y = 4
+				#set_2_cells:
+				tiles.set_cell(x, y, empty)
+				#change_y_again:
+				y = 3
+				#set_2_cells:
+				tiles.set_cell(x, y, empty)
+				#change_y_again2:
+				y = 2
+				#set_2_cells:
+				tiles.set_cell(x, y, mid)
+				#change_x:
+				x += 1
 			#change_were_am_i:
 			if spawnd == how_many:
+				were_am_i = 2
+			elif how_many == 0:
 				were_am_i = 2
 			spawnd = spawnd + 1
 			#again:
@@ -305,26 +315,29 @@ func spawn():
 			$again.start()
 			
 		elif were_am_i == 1:
-			#change_y:
-			y = 4
-			#set_2_cells:
-			tiles.set_cell(x, y, empty)
-			#change_y_again:
-			y = 3
-			#set_2_cells:
-			tiles.set_cell(x, y, empty)
-			#change_y_again2:
-			y = 2
-			#set_2_cells:
-			tiles.set_cell(x, y, empty)
-			#change_y_again3:
-			y = 1
-			#set_2_cells:
-			tiles.set_cell(x, y, mid)
-			#change_x:
-			x += 1
+			if how_many != 0:
+				#change_y:
+				y = 4
+				#set_2_cells:
+				tiles.set_cell(x, y, empty)
+				#change_y_again:
+				y = 3
+				#set_2_cells:
+				tiles.set_cell(x, y, empty)
+				#change_y_again2:
+				y = 2
+				#set_2_cells:
+				tiles.set_cell(x, y, empty)
+				#change_y_again3:
+				y = 1
+				#set_2_cells:
+				tiles.set_cell(x, y, mid)
+				#change_x:
+				x += 1
 			#change_were_am_i:
 			if spawnd == how_many:
+				were_am_i = 2
+			elif how_many == 0:
 				were_am_i = 2
 			spawnd = spawnd + 1
 			#again:
@@ -359,7 +372,10 @@ func _on_again_timeout():
 	spawn()
 
 
-
-
-
-
+#difeculty:
+func _on_dif_timeout():
+	if dif >= 4:
+		$dif.stop()
+		return
+	
+	dif += 1

@@ -11,7 +11,7 @@ radius = 2.58359
 
 [node name="test" type="Node"]
 script = ExtResource( 1 )
-camera_speed = 200
+camera_speed = 250
 camera_move = true
 
 [node name="game_spawner" type="Control" parent="."]
@@ -25,6 +25,10 @@ __meta__ = {
 [node name="again" type="Timer" parent="game_spawner"]
 wait_time = 0.01
 one_shot = true
+
+[node name="dif" type="Timer" parent="game_spawner"]
+wait_time = 5.0
+autostart = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -71,3 +75,4 @@ __meta__ = {
 "_edit_lock_": true
 }
 [connection signal="timeout" from="game_spawner/again" to="game_spawner" method="_on_again_timeout"]
+[connection signal="timeout" from="game_spawner/dif" to="game_spawner" method="_on_dif_timeout"]
