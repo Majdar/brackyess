@@ -20,9 +20,14 @@ var left_no_top : int = 3
 var right_no_top : int = 4
 var empty : int = 5
 
+#holes:
+var hole : int = 7
+var fell : int = 8
+
 #spawn_info:
 var were_am_i : int = 0
 var how_many : int = 3
+var obst : int = 1
 var spawnd : int = 0
 var dif : int = 0
 
@@ -60,20 +65,47 @@ func value(used : int):
 	if stop == true:
 		return
 	
+	#diculty:
 	if dif == 0:
+		
+		#how_many_tiles:
 		how_many = 4
+		
+		#how_many_obstcals:
+		obst = 1
 	
 	elif dif == 1:
+		
+		#how_many_tiles:
 		how_many = 3
+		
+		#how_many_obstcals:
+		obst = 1
+	
 	
 	elif dif == 2:
+		
+		#how_many_tiles:
 		how_many = 2
+		
+		#how_many_obstcals:
+		obst = 1
 	
 	elif dif == 3:
+		
+		#how_many_tiles:
 		how_many = 1
+		
+		#how_many_obstcals:
+		obst = 1
 	
 	elif dif == 4:
+		
+		#how_many_tiles:
 		how_many = 0
+		
+		#how_many_obstcals:
+		obst = 1
 	
 	randomize()
 	
@@ -191,12 +223,43 @@ func spawn():
 			
 		elif were_am_i == 1:
 			if how_many != 0:
-				#change_y:
-				y = 4
-				#set_cell:
-				tiles.set_cell(x, y, mid)
-				#change_x:
-				x += 1
+				if obst > 0 :
+					var d = randi() % 3 + 1
+					match d:
+						1:
+						#change_y:
+							y = 4
+							#set_cell:
+							tiles.set_cell(x, y, mid)
+							#change_x:
+							x += 1
+						
+						2:
+						#obstical
+							obst -= 1
+							y = 4
+							#set_cell:
+							tiles.set_cell(x, y, hole)
+							#change_x:
+							x += 1
+						
+						3:
+						#change_y:
+							y = 4
+							#set_cell:
+							tiles.set_cell(x, y, mid)
+							#change_x:
+							x += 1
+
+				
+				else:
+					#change_y:
+						y = 4
+						#set_cell:
+						tiles.set_cell(x, y, mid)
+						#change_x:
+						x += 1
+	
 			#change_were_am_i:
 			if spawnd == how_many:
 				were_am_i = 2
@@ -216,7 +279,11 @@ func spawn():
 			#change_were_am_i:
 			spawnd = 0
 			were_am_i = 0
+			obst = 0
 			value(1)
+			
+		elif were_am_i == 3:
+			pass
 	
 	
 	#level_2:
@@ -240,16 +307,58 @@ func spawn():
 			
 		elif were_am_i == 1:
 			if how_many != 0:
-				#change_y:
-				y = 4
-				#set_2_cells:
-				tiles.set_cell(x, y, empty)
-				#change_y_again:
-				y = 3
-				#set_2_cells:
-				tiles.set_cell(x, y, mid)
-				#change_x:
-				x += 1
+				if obst > 0:
+					var d = randi() % 3 + 1
+					match d:
+					
+						1:
+							#change_y:
+							y = 4
+							#set_2_cells:
+							tiles.set_cell(x, y, empty)
+							#change_y_again:
+							y = 3
+							#set_2_cells:
+							tiles.set_cell(x, y, mid)
+							#change_x:
+							x += 1
+						
+						2:
+							obst -= 1
+							#obstcal:
+							y = 4
+							#set_2_cells:
+							tiles.set_cell(x, y, fell)
+							#change_y_again:
+							y = 3
+							#set_2_cells:
+							tiles.set_cell(x, y, hole)
+							#change_x:
+							x += 1
+						
+						3:
+							#change_y:
+							y = 4
+							#set_2_cells:
+							tiles.set_cell(x, y, empty)
+							#change_y_again:
+							y = 3
+							#set_2_cells:
+							tiles.set_cell(x, y, mid)
+							#change_x:
+							x += 1
+
+				else:
+					y = 4
+					#set_2_cells:
+					tiles.set_cell(x, y, empty)
+					#change_y_again:
+					y = 3
+						#set_2_cells:
+					tiles.set_cell(x, y, mid)
+					#change_x:
+					x += 1
+
 			#change_were_am_i:
 			if spawnd == how_many:
 				were_am_i = 2
@@ -273,6 +382,7 @@ func spawn():
 			#change_were_am_i:
 			spawnd = 0
 			were_am_i = 0
+			obst = 0
 			value(2)
 	
 	
@@ -301,20 +411,77 @@ func spawn():
 			
 		elif were_am_i == 1:
 			if how_many != 0:
-				#change_y:
-				y = 4
-				#set_2_cells:
-				tiles.set_cell(x, y, empty)
-				#change_y_again:
-				y = 3
-				#set_2_cells:
-				tiles.set_cell(x, y, empty)
-				#change_y_again2:
-				y = 2
-				#set_2_cells:
-				tiles.set_cell(x, y, mid)
-				#change_x:
-				x += 1
+				
+				if obst > 0:
+					var d = randi() % 3 + 1
+					match d:
+					
+						1:
+							#change_y:
+							y = 4
+							#set_2_cells:
+							tiles.set_cell(x, y, empty)
+							#change_y_again:
+							y = 3
+							#set_2_cells:
+							tiles.set_cell(x, y, empty)
+							#change_y_again2:
+							y = 2
+							#set_2_cells:
+							tiles.set_cell(x, y, mid)
+							#change_x:
+							x += 1
+						
+						2:
+							obst -= 1
+							#change_y:
+							y = 4
+							#set_2_cells:
+							tiles.set_cell(x, y, fell)
+							#change_y_again:
+							y = 3
+							#set_2_cells:
+							tiles.set_cell(x, y, fell)
+							#change_y_again2:
+							y = 2
+							#set_2_cells:
+							tiles.set_cell(x, y, hole)
+							#change_x:
+							x += 1
+						
+						3:
+							#change_y:
+							y = 4
+							#set_2_cells:
+							tiles.set_cell(x, y, empty)
+							#change_y_again:
+							y = 3
+							#set_2_cells:
+							tiles.set_cell(x, y, empty)
+							#change_y_again2:
+							y = 2
+							#set_2_cells:
+							tiles.set_cell(x, y, mid)
+							#change_x:
+							x += 1
+
+				else:
+					#change_y:
+					y = 4
+					#set_2_cells:
+					tiles.set_cell(x, y, empty)
+					#change_y_again:
+					y = 3
+					#set_2_cells:
+					tiles.set_cell(x, y, empty)
+					#change_y_again2:
+					y = 2
+					#set_2_cells:
+					tiles.set_cell(x, y, mid)
+					#change_x:
+					x += 1
+
+
 			#change_were_am_i:
 			if spawnd == how_many:
 				were_am_i = 2
@@ -342,6 +509,7 @@ func spawn():
 			#change_were_am_i:
 			spawnd = 0
 			were_am_i = 0
+			obst = 0
 			value(3)
 	
 	
@@ -374,24 +542,93 @@ func spawn():
 			
 		elif were_am_i == 1:
 			if how_many != 0:
-				#change_y:
-				y = 4
-				#set_2_cells:
-				tiles.set_cell(x, y, empty)
-				#change_y_again:
-				y = 3
-				#set_2_cells:
-				tiles.set_cell(x, y, empty)
-				#change_y_again2:
-				y = 2
-				#set_2_cells:
-				tiles.set_cell(x, y, empty)
-				#change_y_again3:
-				y = 1
-				#set_2_cells:
-				tiles.set_cell(x, y, mid)
-				#change_x:
-				x += 1
+
+				
+				if obst > 0:
+					var d = randi() % 3 + 1
+					match d:
+					
+						1:
+							#change_y:
+							y = 4
+							#set_2_cells:
+							tiles.set_cell(x, y, empty)
+							#change_y_again:
+							y = 3
+							#set_2_cells:
+							tiles.set_cell(x, y, empty)
+							#change_y_again2:
+							y = 2
+							#set_2_cells:
+							tiles.set_cell(x, y, empty)
+							#change_y_again3:
+							y = 1
+							#set_2_cells:
+							tiles.set_cell(x, y, mid)
+							#change_x:
+							x += 1
+						
+						2:
+							obst -= 1
+							#change_y:
+							y = 4
+							#set_2_cells:
+							tiles.set_cell(x, y, fell)
+							#change_y_again:
+							y = 3
+							#set_2_cells:
+							tiles.set_cell(x, y, fell)
+							#change_y_again2:
+							y = 2
+							#set_2_cells:
+							tiles.set_cell(x, y, fell)
+							#change_y_again3:
+							y = 1
+							#set_2_cells:
+							tiles.set_cell(x, y, hole)
+							#change_x:
+							x += 1
+						
+						3:
+							#change_y:
+							y = 4
+							#set_2_cells:
+							tiles.set_cell(x, y, empty)
+							#change_y_again:
+							y = 3
+							#set_2_cells:
+							tiles.set_cell(x, y, empty)
+							#change_y_again2:
+							y = 2
+							#set_2_cells:
+							tiles.set_cell(x, y, empty)
+							#change_y_again3:
+							y = 1
+							#set_2_cells:
+							tiles.set_cell(x, y, mid)
+							#change_x:
+							x += 1
+
+				else:
+					#change_y:
+					y = 4
+					#set_2_cells:
+					tiles.set_cell(x, y, empty)
+					#change_y_again:
+					y = 3
+					#set_2_cells:
+					tiles.set_cell(x, y, empty)
+					#change_y_again2:
+					y = 2
+					#set_2_cells:
+					tiles.set_cell(x, y, empty)
+					#change_y_again3:
+					y = 1
+					#set_2_cells:
+					tiles.set_cell(x, y, mid)
+					#change_x:
+					x += 1
+
 			#change_were_am_i:
 			if spawnd == how_many:
 				were_am_i = 2
@@ -423,6 +660,7 @@ func spawn():
 			#change_were_am_i:
 			spawnd = 0
 			were_am_i = 0
+			obst = 0
 			value(4)
 
 

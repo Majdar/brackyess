@@ -8,7 +8,6 @@ func _on_dead_body_entered(body):
 
 
 func _on_bye_timeout():
-	print('bye')
 	queue_free()
 
 
