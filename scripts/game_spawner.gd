@@ -1,5 +1,8 @@
 extends Control
 
+#preloads:
+var fall : PackedScene = preload("res://scenes/dead.tscn")
+
 #nodes:
 onready var tiles : TileMap = get_parent().get_node("tiles")
 
@@ -23,6 +26,11 @@ var how_many : int = 3
 var spawnd : int = 0
 var dif : int = 0
 
+#game_over:
+var stop : bool = false
+
+#spawn_fall:
+var ex : int = 100
 
 func _ready():
 	
@@ -48,6 +56,10 @@ func _process(delta):
 #give_spawn_values:
 func value(used : int):
 	
+	#game_over:
+	if stop == true:
+		return
+	
 	if dif == 0:
 		how_many = 4
 	
@@ -66,14 +78,25 @@ func value(used : int):
 	randomize()
 	
 	if used == 1:
-		level = 2
+		var d = randi() % 3 + 1
+		
+		match d :
+			
+			1:
+				level = 2
+			
+			2:
+				level = 1
+			
+			3:
+				level = 2
 		
 		spawn()
 	
 	
 	elif used == 2:
 		
-		var d = randi() % 2 + 1
+		var d = randi() % 5 + 1
 		
 		match d :
 			
@@ -82,13 +105,22 @@ func value(used : int):
 			
 			2:
 				level = 1
+			
+			3:
+				level = 2
+			
+			4:
+				level = 1
+			
+			5:
+				level = 3
 		
 		spawn()
 	
 	
 	elif used == 3:
 		
-		var d = randi() % 2 + 1
+		var d = randi() % 5 + 1
 		
 		match d :
 			
@@ -97,13 +129,33 @@ func value(used : int):
 			
 			2:
 				level = 4
+			
+			3:
+				level = 3
+			
+			4:
+				level = 2
+			
+			5:
+				level = 2
 		
 		spawn()
 	
 	
 	elif used == 4:
 		
-		level = 3
+		var d = randi() % 3 + 1
+		
+		match d :
+			
+			1:
+				level = 3
+			
+			2:
+				level = 4
+			
+			3:
+				level = 3
 		
 		spawn()
 
@@ -115,6 +167,17 @@ func value(used : int):
 
 #spawn:
 func spawn():
+	
+	#game_over:
+	if stop == true:
+		return
+	
+	#spawn_death_fall:
+	var fall_p = fall.instance()
+	get_parent().add_child(fall_p)
+	fall_p.global_position = Vector2(ex, 700)
+	ex += 184 * 2
+	
 	
 	#level_1:
 	if level == 1:

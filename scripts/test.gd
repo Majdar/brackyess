@@ -18,7 +18,7 @@ func _physics_process(delta):
 	
 	if camera_move == true:
 		$camera_trans.move_and_slide($camera_trans.motion)
-		$camera_trans.motion.x = camera_speed * dir
+		$camera_trans.motion.x = camera_speed 
 		
 
 
