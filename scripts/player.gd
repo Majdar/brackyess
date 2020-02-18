@@ -53,3 +53,9 @@ func inputt():
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = jump
+
+func game_over():
+	$game_over.start()
+
+func _on_game_over_timeout():
+	get_tree().reload_current_scene()

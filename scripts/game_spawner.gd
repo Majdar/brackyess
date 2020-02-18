@@ -160,11 +160,6 @@ func value(used : int):
 		spawn()
 
 
-
-
-
-
-
 #spawn:
 func spawn():
 	
@@ -174,8 +169,8 @@ func spawn():
 	
 	#spawn_death_fall:
 	var fall_p = fall.instance()
-	get_parent().add_child(fall_p)
-	fall_p.global_position = Vector2(ex, 700)
+	call_deferred('add_child', fall_p)
+	fall_p.global_position = Vector2(ex, 640)
 	ex += 184 * 2
 	
 	
