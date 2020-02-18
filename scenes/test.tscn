@@ -21,7 +21,6 @@ extents = Vector2( 31.1829, 31.1553 )
 [node name="test" type="Node"]
 script = ExtResource( 1 )
 camera_speed = 250
-camera_move = true
 
 [node name="game_spawner" type="Control" parent="."]
 margin_right = 40.0
@@ -97,6 +96,7 @@ __meta__ = {
 position = Vector2( 283.761, 449.594 )
 script = ExtResource( 7 )
 __meta__ = {
+"_edit_group_": true,
 "_edit_lock_": true
 }
 slidness = 0.01
