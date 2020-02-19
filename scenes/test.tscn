@@ -5,10 +5,10 @@
 [ext_resource path="res://godot_stuff/tile_set.tres" type="TileSet" id=3]
 [ext_resource path="res://scripts/camera_trans.gd" type="Script" id=4]
 [ext_resource path="res://scripts/game_spawner.gd" type="Script" id=5]
-[ext_resource path="res://assets/icon.png" type="Texture" id=6]
+[ext_resource path="res://assets/Test Icon 2.png" type="Texture" id=6]
 [ext_resource path="res://scripts/player.gd" type="Script" id=7]
 [ext_resource path="res://scripts/dead.gd" type="Script" id=8]
-[ext_resource path="res://assets/Audio/Music_level.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/Audio/Music_menu.ogg" type="AudioStream" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.58359
