@@ -2,6 +2,7 @@ extends Control
 
 #preloads:
 var fall : PackedScene = preload("res://scenes/dead.tscn")
+var throw : PackedScene = preload("res://scenes/throw.tscn")
 
 #nodes:
 onready var tiles : TileMap = get_parent().get_node("tiles")
@@ -11,7 +12,7 @@ onready var world : Node = get_parent()
 var level : int = 1
 var x : int = 9
 var y : int = 4
-export var spawn_time : float = 0.5
+export var spawn_time : float = 0.4
 
 #cell_num:
 var left : int = 0
@@ -24,6 +25,10 @@ var empty : int = 5
 #holes:
 var hole : int = 7
 var fell : int = 8
+
+#holes_values:
+var hole_x : int = 1080
+var hole_y : int = 92
 
 #spawn_info:
 var were_am_i : int = 0
@@ -73,7 +78,7 @@ func value(used : int):
 		spawn_time = 0.3
 		
 		#camera_speed:
-		world.camera_speed = 350
+		world.camera_speed = 300
 		
 		#how_many_tiles:
 		how_many = 4
@@ -240,10 +245,12 @@ func spawn():
 		if were_am_i == 0:
 			#change_y:
 			y = 4
+			hole_y = 552
 			#set_cell:
 			tiles.set_cell(x, y, left)
 			#change_x:
 			x += 1
+			hole_x += 128
 			#change_were_am_i:
 			were_am_i = 1
 			#again:
@@ -257,36 +264,55 @@ func spawn():
 						1:
 						#change_y:
 							y = 4
+							hole_y = 552
 							#set_cell:
 							tiles.set_cell(x, y, mid)
 							#change_x:
 							x += 1
+							hole_x += 128
 						
 						2:
 						#obstical
 							obst -= 1
 							y = 4
+							hole_y = 552
 							#set_cell:
 							tiles.set_cell(x, y, hole)
 							#change_x:
 							x += 1
+							hole_x += 128
+							#hole_type:
+							
+							#instince_thrower:
+							var throw_p = throw.instance()
+							get_parent().add_child(throw_p)
+							throw_p.global_position = Vector2(hole_x, hole_y)
+							
+							#fire:
+							if hole == 7:
+								throw_p.hole_tybe = 1
+							
 						
 						3:
 						#change_y:
 							y = 4
+							hole_y = 552
 							#set_cell:
 							tiles.set_cell(x, y, mid)
 							#change_x:
+							hole_x += 128
 							x += 1
 
 				
 				else:
 					#change_y:
 						y = 4
+						hole_y = 552
 						#set_cell:
 						tiles.set_cell(x, y, mid)
 						#change_x:
 						x += 1
+						hole_x += 128
 	
 			#change_were_am_i:
 			if spawnd == how_many:
@@ -300,10 +326,12 @@ func spawn():
 		elif were_am_i == 2:
 			#change_y:
 			y = 4
+			hole_y = 92
 			#set_cell:
 			tiles.set_cell(x, y, right)
 			#change_x:
 			x += 2
+			hole_x += 265
 			#change_were_am_i:
 			spawnd = 0
 			were_am_i = 0
@@ -320,6 +348,7 @@ func spawn():
 		if were_am_i == 0:
 			#change_y:
 			y = 4
+			hole_y = 400
 			#set_2_cells:
 			tiles.set_cell(x, y, left_no_top)
 			#change_y_again:
@@ -328,6 +357,7 @@ func spawn():
 			tiles.set_cell(x, y, left)
 			#change_x:
 			x += 1
+			hole_x += 128
 			#change_were_am_i:
 			were_am_i = 1
 			#again:
@@ -342,6 +372,7 @@ func spawn():
 						1:
 							#change_y:
 							y = 4
+							hole_y = 400
 							#set_2_cells:
 							tiles.set_cell(x, y, empty)
 							#change_y_again:
@@ -350,11 +381,13 @@ func spawn():
 							tiles.set_cell(x, y, mid)
 							#change_x:
 							x += 1
+							hole_x += 128
 						
 						2:
 							obst -= 1
 							#obstcal:
 							y = 4
+							hole_y = 400
 							#set_2_cells:
 							tiles.set_cell(x, y, fell)
 							#change_y_again:
@@ -363,10 +396,24 @@ func spawn():
 							tiles.set_cell(x, y, hole)
 							#change_x:
 							x += 1
+							hole_x += 128
+							
+							#hole_type:
+							
+							#instince_thrower:
+							var throw_p = throw.instance()
+							get_parent().add_child(throw_p)
+							throw_p.global_position = Vector2(hole_x, hole_y)
+							
+							#fire:
+							if hole == 7:
+								throw_p.hole_tybe = 1
+							
 						
 						3:
 							#change_y:
 							y = 4
+							hole_y = 400
 							#set_2_cells:
 							tiles.set_cell(x, y, empty)
 							#change_y_again:
@@ -375,9 +422,11 @@ func spawn():
 							tiles.set_cell(x, y, mid)
 							#change_x:
 							x += 1
+							hole_x += 128
 
 				else:
 					y = 4
+					hole_y = 400
 					#set_2_cells:
 					tiles.set_cell(x, y, empty)
 					#change_y_again:
@@ -386,6 +435,7 @@ func spawn():
 					tiles.set_cell(x, y, mid)
 					#change_x:
 					x += 1
+					hole_x += 128
 
 			#change_were_am_i:
 			if spawnd == how_many:
@@ -399,6 +449,7 @@ func spawn():
 		elif were_am_i == 2:
 			#change_y:
 			y = 4
+			hole_y = 400
 			#set_2_cells:
 			tiles.set_cell(x, y, right_no_top)
 			#change_y_again:
@@ -407,6 +458,7 @@ func spawn():
 			tiles.set_cell(x, y, right)
 			#change_x:
 			x += 2
+			hole_x += 256
 			#change_were_am_i:
 			spawnd = 0
 			were_am_i = 0
@@ -420,6 +472,7 @@ func spawn():
 		if were_am_i == 0:
 			#change_y:
 			y = 4
+			hole_y = 280
 			#set_2_cells:
 			tiles.set_cell(x, y, left_no_top)
 			#change_y_again:
@@ -432,6 +485,7 @@ func spawn():
 			tiles.set_cell(x, y, left)
 			#change_x:
 			x += 1
+			hole_x += 128
 			#change_were_am_i:
 			were_am_i = 1
 			#again:
@@ -447,6 +501,7 @@ func spawn():
 						1:
 							#change_y:
 							y = 4
+							hole_y = 280
 							#set_2_cells:
 							tiles.set_cell(x, y, empty)
 							#change_y_again:
@@ -459,11 +514,13 @@ func spawn():
 							tiles.set_cell(x, y, mid)
 							#change_x:
 							x += 1
+							hole_x += 128
 						
 						2:
 							obst -= 1
 							#change_y:
 							y = 4
+							hole_y = 280
 							#set_2_cells:
 							tiles.set_cell(x, y, fell)
 							#change_y_again:
@@ -476,10 +533,24 @@ func spawn():
 							tiles.set_cell(x, y, hole)
 							#change_x:
 							x += 1
+							hole_x += 128
+							
+							#hole_type:
+							
+							#instince_thrower:
+							var throw_p = throw.instance()
+							get_parent().add_child(throw_p)
+							throw_p.global_position = Vector2(hole_x, hole_y)
+							
+							#fire:
+							if hole == 7:
+								throw_p.hole_tybe = 1
+						
 						
 						3:
 							#change_y:
 							y = 4
+							hole_y = 280
 							#set_2_cells:
 							tiles.set_cell(x, y, empty)
 							#change_y_again:
@@ -492,10 +563,12 @@ func spawn():
 							tiles.set_cell(x, y, mid)
 							#change_x:
 							x += 1
+							hole_x += 128
 
 				else:
 					#change_y:
 					y = 4
+					hole_y = 280
 					#set_2_cells:
 					tiles.set_cell(x, y, empty)
 					#change_y_again:
@@ -508,6 +581,7 @@ func spawn():
 					tiles.set_cell(x, y, mid)
 					#change_x:
 					x += 1
+					hole_x += 128
 
 
 			#change_were_am_i:
@@ -521,6 +595,7 @@ func spawn():
 			
 		elif were_am_i == 2:
 			#change_y:
+			hole_y = 280
 			y = 4
 			#set_2_cells:
 			tiles.set_cell(x, y, right_no_top)
@@ -534,6 +609,7 @@ func spawn():
 			tiles.set_cell(x, y, right)
 			#change_x:
 			x += 2
+			hole_x += 256
 			#change_were_am_i:
 			spawnd = 0
 			were_am_i = 0
@@ -546,6 +622,7 @@ func spawn():
 		#were_am_i:
 		if were_am_i == 0:
 			#change_y:
+			hole_y = 200
 			y = 4
 			#set_2_cells:
 			tiles.set_cell(x, y, left_no_top)
@@ -563,6 +640,7 @@ func spawn():
 			tiles.set_cell(x, y, left)
 			#change_x:
 			x += 1
+			hole_x += 128
 			#change_were_am_i:
 			were_am_i = 1
 			#again:
@@ -579,6 +657,7 @@ func spawn():
 						1:
 							#change_y:
 							y = 4
+							hole_y = 200
 							#set_2_cells:
 							tiles.set_cell(x, y, empty)
 							#change_y_again:
@@ -595,11 +674,13 @@ func spawn():
 							tiles.set_cell(x, y, mid)
 							#change_x:
 							x += 1
+							hole_x += 128
 						
 						2:
 							obst -= 1
 							#change_y:
 							y = 4
+							hole_y = 200
 							#set_2_cells:
 							tiles.set_cell(x, y, fell)
 							#change_y_again:
@@ -616,10 +697,23 @@ func spawn():
 							tiles.set_cell(x, y, hole)
 							#change_x:
 							x += 1
+							hole_x += 128
+							
+							#hole_type:
+							
+							#instince_thrower:
+							var throw_p = throw.instance()
+							get_parent().add_child(throw_p)
+							throw_p.global_position = Vector2(hole_x, hole_y)
+							
+							#fire:
+							if hole == 7:
+								throw_p.hole_tybe = 1
 						
 						3:
 							#change_y:
 							y = 4
+							hole_y = 200
 							#set_2_cells:
 							tiles.set_cell(x, y, empty)
 							#change_y_again:
@@ -636,10 +730,12 @@ func spawn():
 							tiles.set_cell(x, y, mid)
 							#change_x:
 							x += 1
+							hole_x += 128
 
 				else:
 					#change_y:
 					y = 4
+					hole_y = 200
 					#set_2_cells:
 					tiles.set_cell(x, y, empty)
 					#change_y_again:
@@ -656,6 +752,7 @@ func spawn():
 					tiles.set_cell(x, y, mid)
 					#change_x:
 					x += 1
+					hole_x += 128
 
 			#change_were_am_i:
 			if spawnd == how_many:
@@ -669,6 +766,7 @@ func spawn():
 		elif were_am_i == 2:
 			#change_y:
 			y = 4
+			hole_y = 200
 			#set_2_cells:
 			tiles.set_cell(x, y, right_no_top)
 			#change_y_again:
@@ -685,6 +783,7 @@ func spawn():
 			tiles.set_cell(x, y, right)
 			#change_x:
 			x += 2
+			hole_x += 256
 			#change_were_am_i:
 			spawnd = 0
 			were_am_i = 0
@@ -701,5 +800,6 @@ func _on_dif_timeout():
 	if dif >= 3:
 		$dif.stop()
 		return
-	
+
 	dif += 1
+	pass

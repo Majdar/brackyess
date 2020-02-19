@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/tileset/left_tile.png" type="Texture" id=4]
 [ext_resource path="res://assets/tileset/inside.png" type="Texture" id=5]
 [ext_resource path="res://assets/tileset/right_tile.png" type="Texture" id=6]
-[ext_resource path="res://assets/holes/empty.png" type="Texture" id=7]
+[ext_resource path="res://assets/holes/fire/fire.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 63.8439, 64.1375 )
