@@ -67,6 +67,21 @@ func _process(delta):
 #give_spawn_values:
 func value(used : int):
 	
+	randomize()
+	
+	#chose_a_hole_tybe:
+	var r = randi() % 3 + 1
+	
+	match r:
+		1:
+			hole = 7
+		
+		2:
+			hole = 9
+		
+		3:
+			hole = 10
+	
 	#game_over:
 	if stop == true:
 		return
@@ -264,7 +279,7 @@ func spawn():
 						1:
 						#change_y:
 							y = 4
-							hole_y = 552
+							hole_y = 553
 							#set_cell:
 							tiles.set_cell(x, y, mid)
 							#change_x:
@@ -275,7 +290,7 @@ func spawn():
 						#obstical
 							obst -= 1
 							y = 4
-							hole_y = 552
+							hole_y = 533
 							#set_cell:
 							tiles.set_cell(x, y, hole)
 							#change_x:
@@ -292,6 +307,14 @@ func spawn():
 							if hole == 7:
 								throw_p.hole_tybe = 1
 							
+							#snow:
+							elif hole == 9:
+								throw_p.hole_tybe = 2
+							
+							#posion:
+							elif hole == 10:
+								throw_p.hole_tybe = 3
+							
 						
 						3:
 						#change_y:
@@ -307,7 +330,7 @@ func spawn():
 				else:
 					#change_y:
 						y = 4
-						hole_y = 552
+						hole_y = 553
 						#set_cell:
 						tiles.set_cell(x, y, mid)
 						#change_x:
@@ -331,7 +354,7 @@ func spawn():
 			tiles.set_cell(x, y, right)
 			#change_x:
 			x += 2
-			hole_x += 265
+			hole_x += 256
 			#change_were_am_i:
 			spawnd = 0
 			were_am_i = 0
@@ -387,7 +410,7 @@ func spawn():
 							obst -= 1
 							#obstcal:
 							y = 4
-							hole_y = 400
+							hole_y = 406
 							#set_2_cells:
 							tiles.set_cell(x, y, fell)
 							#change_y_again:
@@ -408,6 +431,14 @@ func spawn():
 							#fire:
 							if hole == 7:
 								throw_p.hole_tybe = 1
+							
+							#snow:
+							elif hole == 9:
+								throw_p.hole_tybe = 2
+							
+							#posion:
+							elif hole == 10:
+								throw_p.hole_tybe = 3
 							
 						
 						3:
@@ -520,7 +551,7 @@ func spawn():
 							obst -= 1
 							#change_y:
 							y = 4
-							hole_y = 280
+							hole_y = 278
 							#set_2_cells:
 							tiles.set_cell(x, y, fell)
 							#change_y_again:
@@ -545,6 +576,14 @@ func spawn():
 							#fire:
 							if hole == 7:
 								throw_p.hole_tybe = 1
+							
+							#snow:
+							elif hole == 9:
+								throw_p.hole_tybe = 2
+							
+							#posion:
+							elif hole == 10:
+								throw_p.hole_tybe = 3
 						
 						
 						3:
@@ -680,7 +719,7 @@ func spawn():
 							obst -= 1
 							#change_y:
 							y = 4
-							hole_y = 200
+							hole_y = 147
 							#set_2_cells:
 							tiles.set_cell(x, y, fell)
 							#change_y_again:
@@ -709,6 +748,14 @@ func spawn():
 							#fire:
 							if hole == 7:
 								throw_p.hole_tybe = 1
+							
+							#snow:
+							elif hole == 9:
+								throw_p.hole_tybe = 2
+							
+							#posion:
+							elif hole == 10:
+								throw_p.hole_tybe = 3
 						
 						3:
 							#change_y:

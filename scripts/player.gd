@@ -146,3 +146,26 @@ func game_over():
 func _on_game_over_timeout():
 # warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
+
+#holes_cause_problems:
+
+#ice:
+func cold():
+	modulate = Color(0.5, 1, 1, 1)
+	max_speed = 420
+	acc = 7
+	jump = - 450
+	rot_acc = 0.001
+	max_rot_speed = 0.03
+	gravity = 25
+	$back_to_normal.start()
+
+
+func _on_back_to_normal_timeout():
+	modulate = Color(1, 1, 1, 1)
+	max_speed = 600
+	acc = 15
+	jump = -650
+	rot_acc = 0.002
+	max_rot_speed = 0.05
+	gravity = 20
