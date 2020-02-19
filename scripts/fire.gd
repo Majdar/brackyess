@@ -33,5 +33,4 @@ func _on_bye_timeout():
 
 func _on_fire_body_entered(body):
 	if body.name == 'player':
-# warning-ignore:return_value_discarded
-		get_tree().reload_current_scene()
+		body.hurt()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset/inside.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scripts/player.gd" type="Script" id=7]
 [ext_resource path="res://scripts/dead.gd" type="Script" id=8]
 [ext_resource path="res://assets/Audio/Music_menu.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/health/Heart.png" type="Texture" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.58359
@@ -18,6 +19,23 @@ extents = Vector2( 561.05, 10 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 31.1829, 31.1553 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "hurt"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.207843 ) ]
+}
 
 [node name="test" type="Node"]
 script = ExtResource( 1 )
@@ -57,6 +75,37 @@ __meta__ = {
 
 [node name="camera_trans" type="KinematicBody2D" parent="."]
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="camera_trans"]
+layer = 100
+
+[node name="health" type="Control" parent="camera_trans/CanvasLayer"]
+margin_left = 4.0
+margin_top = 3.46037
+margin_right = 113.0
+margin_bottom = 62.4604
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="Sprite" parent="camera_trans/CanvasLayer/health"]
+position = Vector2( 32.05, 30.54 )
+scale = Vector2( 5.4608, 5.4608 )
+texture = ExtResource( 10 )
+
+[node name="2" type="Sprite" parent="camera_trans/CanvasLayer/health"]
+position = Vector2( 82.7682, 30.54 )
+scale = Vector2( 5.4608, 5.4608 )
+texture = ExtResource( 10 )
+
+[node name="3" type="Sprite" parent="camera_trans/CanvasLayer/health"]
+position = Vector2( 132.511, 30.54 )
+scale = Vector2( 5.4608, 5.4608 )
+texture = ExtResource( 10 )
 
 [node name="camera" type="Camera2D" parent="camera_trans"]
 position = Vector2( 0, 37.3933 )
@@ -85,7 +134,7 @@ __meta__ = {
 shape = SubResource( 2 )
 
 [node name="player" type="KinematicBody2D" parent="."]
-position = Vector2( 62.7084, 408.541 )
+position = Vector2( 347.596, 410.048 )
 z_index = -2
 script = ExtResource( 7 )
 __meta__ = {
@@ -107,6 +156,13 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="anim" type="AnimationPlayer" parent="player"]
+anims/hurt = SubResource( 4 )
+
+[node name="endr" type="Timer" parent="player"]
+wait_time = 2.0
+one_shot = true
+
 [node name="tiles" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 128, 128 )
@@ -124,3 +180,4 @@ autoplay = true
 [connection signal="body_entered" from="camera_trans/dead" to="camera_trans/dead" method="_on_dead_body_entered"]
 [connection signal="timeout" from="player/game_over" to="player" method="_on_game_over_timeout"]
 [connection signal="timeout" from="player/back_to_normal" to="player" method="_on_back_to_normal_timeout"]
+[connection signal="timeout" from="player/endr" to="player" method="_on_endr_timeout"]

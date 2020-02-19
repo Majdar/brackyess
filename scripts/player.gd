@@ -18,6 +18,10 @@ export var rot_speed : float = 0
 export var max_rot_speed : float = 0.1
 var in_air : bool = false
 
+#vars_player:
+var hp : int = 3
+var endr : bool = false
+
 #funcs:
 # warning-ignore:unused_argument
 func _physics_process(delta):
@@ -140,6 +144,20 @@ func inputt():
 			$Sprite.rotate(lerp(rot_speed, 0, 0.001))
 
 
+#func hurt:
+func hurt():
+	if endr == false:
+		hp -= 1
+		endr = true
+		$anim.play("hurt")
+		$endr.start()
+	
+	
+	if hp <= 0:
+		get_tree().reload_current_scene()
+
+
+
 #game_over:
 func game_over():
 	$game_over.start()
@@ -169,3 +187,9 @@ func _on_back_to_normal_timeout():
 	rot_acc = 0.002
 	max_rot_speed = 0.05
 	gravity = 20
+
+#endrence:
+func _on_endr_timeout():
+	$anim.stop()
+	modulate = Color(1, 1, 1, 1)
+	endr = false

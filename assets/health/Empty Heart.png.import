@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hole with fire.png-bb7263853794007df93bb12559be8220.stex"
+path="res://.import/Empty Heart.png-45040f3b54a1f97003b0c797289a2d0e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/holes/fire/Hole with fire.png"
-dest_files=[ "res://.import/Hole with fire.png-bb7263853794007df93bb12559be8220.stex" ]
+source_file="res://assets/health/Empty Heart.png"
+dest_files=[ "res://.import/Empty Heart.png-45040f3b54a1f97003b0c797289a2d0e.stex" ]
 
 [params]
 

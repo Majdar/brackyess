@@ -26,3 +26,5 @@ func _physics_process(delta):
 func go():
 	camera_move = true
 
+
+
