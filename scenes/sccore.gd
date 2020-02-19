@@ -16,4 +16,4 @@ func _on_xp_timeout():
 
 func _physics_process(delta):
 	
-	text = "sccore : " + str(sccore)
+	text = "score : " + str(sccore)
