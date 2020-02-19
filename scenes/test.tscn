@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset/inside.png" type="Texture" id=2]
@@ -10,6 +10,13 @@
 [ext_resource path="res://scripts/dead.gd" type="Script" id=8]
 [ext_resource path="res://assets/Audio/Music_menu.ogg" type="AudioStream" id=9]
 [ext_resource path="res://assets/health/Heart.png" type="Texture" id=10]
+[ext_resource path="res://scenes/sccore.gd" type="Script" id=11]
+[ext_resource path="res://assets/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=12]
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+outline_size = 3
+font_data = ExtResource( 12 )
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.58359
@@ -81,6 +88,24 @@ __meta__ = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="camera_trans"]
 layer = 100
+
+[node name="sccore" type="Label" parent="camera_trans/CanvasLayer"]
+margin_left = 568.208
+margin_top = 5.0
+margin_right = 1088.21
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "sccore : 0"
+align = 1
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="xp" type="Timer" parent="camera_trans/CanvasLayer/sccore"]
+wait_time = 3.0
+autostart = true
 
 [node name="health" type="Control" parent="camera_trans/CanvasLayer"]
 margin_left = 4.0
@@ -177,6 +202,7 @@ stream = ExtResource( 9 )
 autoplay = true
 [connection signal="timeout" from="game_spawner/again" to="game_spawner" method="_on_again_timeout"]
 [connection signal="timeout" from="game_spawner/dif" to="game_spawner" method="_on_dif_timeout"]
+[connection signal="timeout" from="camera_trans/CanvasLayer/sccore/xp" to="camera_trans/CanvasLayer/sccore" method="_on_xp_timeout"]
 [connection signal="body_entered" from="camera_trans/dead" to="camera_trans/dead" method="_on_dead_body_entered"]
 [connection signal="timeout" from="player/game_over" to="player" method="_on_game_over_timeout"]
 [connection signal="timeout" from="player/back_to_normal" to="player" method="_on_back_to_normal_timeout"]
