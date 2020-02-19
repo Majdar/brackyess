@@ -13,6 +13,7 @@ onready var h3 : Sprite = get_parent().get_node("camera_trans/CanvasLayer/health
 #preloads:
 var empty : Texture = preload("res://assets/health/Empty Heart.png")
 
+# warning-ignore:unused_argument
 func _process(delta):
 	
 	if player.hp == 2:

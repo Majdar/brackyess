@@ -154,6 +154,7 @@ func hurt():
 	
 	
 	if hp <= 0:
+# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 
 
