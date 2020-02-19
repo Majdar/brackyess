@@ -5,6 +5,7 @@ var fall : PackedScene = preload("res://scenes/dead.tscn")
 
 #nodes:
 onready var tiles : TileMap = get_parent().get_node("tiles")
+onready var world : Node = get_parent()
 
 #spawn_normal:
 var level : int = 1
@@ -68,6 +69,12 @@ func value(used : int):
 	#diculty:
 	if dif == 0:
 		
+		#spawn_speed:
+		spawn_time = 0.3
+		
+		#camera_speed:
+		world.camera_speed = 350
+		
 		#how_many_tiles:
 		how_many = 4
 		
@@ -75,6 +82,9 @@ func value(used : int):
 		obst = 1
 	
 	elif dif == 1:
+		
+		#camera_speed:
+		world.camera_speed = 400
 		
 		#how_many_tiles:
 		how_many = 3
@@ -85,6 +95,12 @@ func value(used : int):
 	
 	elif dif == 2:
 		
+		#spawn_speed:
+		spawn_time = 0.2
+		
+		#camera_speed:
+		world.camera_speed = 450
+		
 		#how_many_tiles:
 		how_many = 2
 		
@@ -93,6 +109,12 @@ func value(used : int):
 	
 	elif dif == 3:
 		
+		#spawn_speed:
+		spawn_time = 0.1
+		
+		#camera_speed:
+		world.camera_speed = 500
+		
 		#how_many_tiles:
 		how_many = 1
 		
@@ -100,6 +122,12 @@ func value(used : int):
 		obst = 1
 	
 	elif dif == 4:
+		
+		#spawn_speed:
+		spawn_time = 0.05
+		
+		#camera_speed:
+		world.camera_speed = 550
 		
 		#how_many_tiles:
 		how_many = 0
@@ -670,7 +698,7 @@ func _on_again_timeout():
 
 #difeculty:
 func _on_dif_timeout():
-	if dif >= 4:
+	if dif >= 3:
 		$dif.stop()
 		return
 	
