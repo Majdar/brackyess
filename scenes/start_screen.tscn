@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://scripts/test.gd" type="Script" id=1]
+[ext_resource path="res://scenes/start_screen_test.gd" type="Script" id=1]
 [ext_resource path="res://scripts/start_scren_camera.gd" type="Script" id=2]
 [ext_resource path="res://scripts/start_scren_spawner.gd" type="Script" id=3]
 [ext_resource path="res://scripts/save_system.gd" type="Script" id=4]
@@ -107,7 +107,6 @@ tracks/0/keys = {
 
 [node name="test" type="Node" parent="."]
 script = ExtResource( 1 )
-camera_move = true
 
 [node name="game_spawner" type="Control" parent="test"]
 margin_right = 40.0

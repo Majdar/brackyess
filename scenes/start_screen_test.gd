@@ -9,11 +9,6 @@ export var camera_move : bool = false
 var go : bool = false
 var were : String 
 
-#nodes:
-onready var a = get_node("camera_trans/CanvasLayer/health/1")
-onready var b = get_node("camera_trans/CanvasLayer/health/2")
-onready var c = get_node("camera_trans/CanvasLayer/health/3")
-var empty : Texture = preload("res://assets/health/Heart_empty.png")
 
 #func_ready:
 func _ready():
@@ -91,9 +86,3 @@ func _on_exit_b_mouse_exited():
 	$camera_trans/CanvasLayer/lost/exit.modulate = Color(1, 1, 1, 1)
 	$camera_trans/CanvasLayer/lost/exit_b.modulate = Color(1, 1, 1, 1)
 
-func sound():
-	if $player.hp <= 0:
-		$sounds.play()
-		a.texture = empty
-		b.texture = empty
-		c.texture = empty

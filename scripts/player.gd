@@ -171,12 +171,13 @@ func game_over():
 
 func _on_game_over_timeout():
 	hp = 0
+	$CollisionShape2D.disabled = true
 	spawner.stop = true
 	test.camera_move = false
 	test.dead()
+	test.sound()
 	camera_trans.go = false
 	audio.stop()
-	sounds.play()
 	$Tween.interpolate_property(self, 'scale', scale, Vector2(0,0), 0.5,Tween.TRANS_CIRC,Tween.EASE_OUT )
 	$Tween.start()
 
