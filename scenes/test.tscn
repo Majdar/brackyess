@@ -208,10 +208,10 @@ __meta__ = {
 }
 
 [node name="health" type="Control" parent="camera_trans/CanvasLayer"]
-margin_left = 4.0
-margin_top = 3.46037
-margin_right = 113.0
-margin_bottom = 62.4604
+margin_left = 11.22
+margin_top = 11.5829
+margin_right = 120.22
+margin_bottom = 70.5829
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,

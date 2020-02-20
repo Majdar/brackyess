@@ -211,15 +211,19 @@ __meta__ = {
 
 [node name="buttonss" type="Node2D" parent="test/CanvasLayer/buttons"]
 modulate = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="start" type="Button" parent="test/CanvasLayer/buttons/buttonss"]
 anchor_left = 8.92
 anchor_top = 2.504
 anchor_right = 16.12
 anchor_bottom = 4.604
-margin_left = 236.755
+margin_left = 261.132
 margin_top = 152.353
-margin_right = 586.755
+margin_right = 611.132
 margin_bottom = 222.353
 focus_mode = 0
 custom_styles/hover = SubResource( 3 )
@@ -235,7 +239,6 @@ custom_colors/font_color_pressed = Color( 0, 0, 0, 0.219608 )
 enabled_focus_mode = 0
 text = "start"
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -244,9 +247,9 @@ anchor_left = 8.92
 anchor_top = 2.504
 anchor_right = 16.12
 anchor_bottom = 4.604
-margin_left = 365.908
+margin_left = 390.285
 margin_top = 296.58
-margin_right = 625.908
+margin_right = 650.285
 margin_bottom = 361.58
 focus_mode = 0
 custom_styles/hover = SubResource( 3 )
@@ -270,9 +273,9 @@ anchor_left = 8.92
 anchor_top = 2.504
 anchor_right = 16.12
 anchor_bottom = 4.604
-margin_left = 473.319
+margin_left = 497.696
 margin_top = 435.468
-margin_right = 673.319
+margin_right = 697.696
 margin_bottom = 485.468
 focus_mode = 0
 custom_styles/hover = SubResource( 3 )
