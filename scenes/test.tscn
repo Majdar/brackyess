@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scripts/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset/inside.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/buttons/exit.png" type="Texture" id=15]
 [ext_resource path="res://scripts/coins.gd" type="Script" id=16]
 [ext_resource path="res://assets/Audio/Player_death.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/Audio/Player_jump.wav" type="AudioStream" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 561.05, 10 )
@@ -92,6 +93,30 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.207843 ) ]
 }
 
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.674074, 1 )
+colors = PoolColorArray( 0.945313, 1, 0, 1, 0.968627, 1, 0.415686, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
+[sub_resource type="Curve" id=10]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.981013, 0.261364 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
+
+[sub_resource type="ParticlesMaterial" id=12]
+emission_shape = 2
+emission_box_extents = Vector3( 1.6, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 2.0
+scale_curve = SubResource( 11 )
+color_ramp = SubResource( 9 )
+
 [node name="test" type="Node"]
 script = ExtResource( 1 )
 camera_move = true
@@ -121,7 +146,7 @@ wait_time = 0.01
 one_shot = true
 
 [node name="dif" type="Timer" parent="game_spawner"]
-wait_time = 5.0
+wait_time = 15.0
 autostart = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -330,20 +355,21 @@ one_shot = true
 autostart = true
 
 [node name="player" type="KinematicBody2D" parent="."]
-position = Vector2( 244.677, 434.307 )
+position = Vector2( 244.677, 479.57 )
 z_index = -2
 script = ExtResource( 7 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 slidness = 0.01
+
+[node name="sound" type="AudioStreamPlayer" parent="player"]
+stream = ExtResource( 18 )
+volume_db = -9.0
+autoplay = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
 shape = SubResource( 4 )
-
-[node name="Sprite" type="Sprite" parent="player"]
-texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="game_over" type="Timer" parent="player"]
 wait_time = 0.2
@@ -361,6 +387,30 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Tween" type="Tween" parent="player"]
+
+[node name="left" type="Particles2D" parent="player"]
+position = Vector2( -29.1989, 28.9087 )
+rotation = 1.57079
+emitting = false
+amount = 5
+lifetime = 0.8
+process_material = SubResource( 12 )
+
+[node name="right" type="Particles2D" parent="player"]
+position = Vector2( 30.3832, 29.0748 )
+rotation = -1.57079
+emitting = false
+amount = 20
+lifetime = 0.8
+process_material = SubResource( 12 )
+
+[node name="Sprite" type="Sprite" parent="player"]
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ghost" type="Timer" parent="player"]
 
 [node name="tiles" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -402,3 +452,4 @@ volume_db = -3.0
 [connection signal="timeout" from="player/back_to_normal" to="player" method="_on_back_to_normal_timeout"]
 [connection signal="timeout" from="player/endr" to="player" method="_on_endr_timeout"]
 [connection signal="tween_completed" from="player/Tween" to="player" method="_on_Tween_tween_completed"]
+[connection signal="timeout" from="player/ghost" to="player" method="_on_ghost_timeout"]

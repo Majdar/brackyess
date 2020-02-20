@@ -17,7 +17,7 @@ func again():
 	
 	#fire_hole:
 	if hole_tybe == 1:
-		
+		$fire.emitting = true
 		var fire_p = fire.instance()
 		get_parent().add_child(fire_p)
 		fire_p.global_position = global_position
@@ -26,7 +26,7 @@ func again():
 	
 	#ice_ball:
 	elif hole_tybe == 2:
-		
+		$ice.emitting = true
 		var fire_p = snow.instance()
 		get_parent().add_child(fire_p)
 		fire_p.global_position = global_position
@@ -35,7 +35,7 @@ func again():
 	
 	#posion:
 	elif hole_tybe == 3:
-		
+		$smell.emitting = true
 		var fire_p = posion.instance()
 		get_parent().add_child(fire_p)
 		fire_p.global_position = Vector2(position.x + 47, position.y + 42)

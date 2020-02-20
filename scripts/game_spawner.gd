@@ -115,7 +115,7 @@ func value(used : int):
 	if dif == 0:
 		
 		#spawn_speed:
-		spawn_time = 0.3
+		spawn_time = 0.5
 		
 		#camera_speed:
 		world.camera_speed = 300
@@ -143,7 +143,7 @@ func value(used : int):
 	elif dif == 2:
 		
 		#spawn_speed:
-		spawn_time = 0.2
+		spawn_time = 0.5
 		
 		#camera_speed:
 		world.camera_speed = 450
@@ -158,7 +158,7 @@ func value(used : int):
 	elif dif == 3:
 		
 		#spawn_speed:
-		spawn_time = 0.1
+		spawn_time = 0.4
 		
 		#camera_speed:
 		world.camera_speed = 500
@@ -173,7 +173,7 @@ func value(used : int):
 	elif dif == 4:
 		
 		#spawn_speed:
-		spawn_time = 0.05
+		spawn_time = 0.3
 		
 		#camera_speed:
 		world.camera_speed = 550

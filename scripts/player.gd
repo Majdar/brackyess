@@ -7,6 +7,10 @@ onready var camera_trans : KinematicBody2D = get_parent().get_node("camera_trans
 onready var audio : AudioStreamPlayer = get_parent().get_node("AudioStreamPlayer")
 onready var sounds : AudioStreamPlayer = get_parent().get_node("sounds")
 
+#preloads:
+var ghost : PackedScene = preload("res://scenes/ghost.tscn")
+var once : bool = false
+
 #vars_phy:
 
 #vectors:
@@ -31,6 +35,25 @@ var endr : bool = false
 #funcs:
 # warning-ignore:unused_argument
 func _physics_process(delta):
+	
+	#partcles:
+	if is_on_floor():
+		if motion.x > 400:
+			$left.emitting = true
+			$right.emitting = false
+		
+		elif motion.x < -400:
+			$left.emitting = false
+			$right.emitting = true
+		
+		elif motion.x > -400 and motion.x < 400:
+			$left.emitting = false
+			$right.emitting = false
+	
+	else:
+		$left.emitting = false
+		$right.emitting = false
+		
 	
 	#on_ground:
 	if is_on_floor():
@@ -91,6 +114,12 @@ func _physics_process(delta):
 			
 			
 			in_air = false
+			
+			if is_on_floor() == false:
+				if motion.x > 300:
+					if once == false:
+						$ghost.start()
+						once = true
 
 	
 	#input:
@@ -127,7 +156,10 @@ func inputt():
 	#jump:
 	if is_on_floor():
 		if Input.is_action_just_pressed("ui_up"):
+			$left.emitting = false
+			$right.emitting = false
 			motion.y = jump
+			$sound.play()
 	
 	#in_air:
 	else:
@@ -221,3 +253,12 @@ func coin():
 # warning-ignore:unused_argument
 func _on_Tween_tween_completed(object, key):
 	queue_free()
+
+
+func _on_ghost_timeout():
+			var ghost_b = ghost.instance()
+			get_parent().add_child(ghost_b)
+			ghost_b.global_position = global_position
+			ghost_b.texture = $Sprite.texture
+			ghost_b.rotation = rotation
+			once = false

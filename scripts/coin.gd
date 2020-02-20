@@ -24,5 +24,4 @@ func _on_VisibilityNotifier2D_screen_entered():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	if is_in == true:
-		print('bye')
 		queue_free()
