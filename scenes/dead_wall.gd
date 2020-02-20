@@ -1,13 +1,15 @@
 extends Area2D
 
+
 var motion : Vector2 = Vector2()
 var speed : int = 300
 
 
 func _physics_process(delta):
 	
-	motion.x = speed * 1 * delta
-	translate(motion)
+	if get_parent().camera_move == true:
+		motion.x = speed * 1 * delta
+		translate(motion)
 
 
 func _on_dead_body_entered(body):
@@ -21,5 +23,4 @@ func _on_bye_timeout():
 
 func _on_VisibilityNotifier2D_screen_entered():
 	$bye.start()
-
 

@@ -194,3 +194,8 @@ func _on_endr_timeout():
 	$anim.stop()
 	modulate = Color(1, 1, 1, 1)
 	endr = false
+
+#coins:
+func coin():
+	
+	global.coins += 1

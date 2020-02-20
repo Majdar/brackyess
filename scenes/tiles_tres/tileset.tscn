@@ -15,6 +15,7 @@ extents = Vector2( 63.8439, 64.1375 )
 [node name="tileset" type="Node"]
 
 [node name="left" type="Sprite" parent="."]
+z_index = 3
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -30,7 +31,7 @@ __meta__ = {
 
 [node name="mid" type="Sprite" parent="."]
 position = Vector2( 193.216, 0 )
-z_index = -3
+z_index = 3
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -46,6 +47,7 @@ __meta__ = {
 
 [node name="right" type="Sprite" parent="."]
 position = Vector2( 383.656, 0 )
+z_index = 3
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -61,6 +63,7 @@ __meta__ = {
 
 [node name="left_2" type="Sprite" parent="."]
 position = Vector2( 579.925, 1.32684 )
+z_index = 3
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
@@ -73,6 +76,7 @@ shape = SubResource( 1 )
 
 [node name="right_2" type="Sprite" parent="."]
 position = Vector2( 788.343, 0 )
+z_index = 3
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
@@ -88,6 +92,7 @@ __meta__ = {
 
 [node name="empty" type="Sprite" parent="."]
 position = Vector2( 994.47, 0 )
+z_index = 3
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
@@ -102,11 +107,12 @@ __meta__ = {
 }
 
 [node name="hole" type="Sprite" parent="."]
-position = Vector2( -187.804, -2.86396 )
+position = Vector2( -166.904, -2.86396 )
 texture = ExtResource( 8 )
 
 [node name="fell" type="Sprite" parent="."]
 position = Vector2( 1262.25, 0 )
+scale = Vector2( 0.786592, 0.786592 )
 z_index = -1
 texture = ExtResource( 6 )
 __meta__ = {
