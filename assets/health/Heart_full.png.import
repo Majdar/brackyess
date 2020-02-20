@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Test Icon 2.png-f76f3f43ecb91f68c76c3addc9cbf38e.stex"
+path="res://.import/Heart_full.png-2a3a3e479d55983d0e5380adf5690b36.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/charcter sprites/Test Icon 2.png"
-dest_files=[ "res://.import/Test Icon 2.png-f76f3f43ecb91f68c76c3addc9cbf38e.stex" ]
+source_file="res://assets/health/Heart_full.png"
+dest_files=[ "res://.import/Heart_full.png-2a3a3e479d55983d0e5380adf5690b36.stex" ]
 
 [params]
 
