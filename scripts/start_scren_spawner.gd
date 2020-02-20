@@ -8,7 +8,7 @@ var coin : PackedScene = preload("res://scenes/coin.tscn")
 #nodes:
 onready var tiles : TileMap = get_parent().get_node("tiles")
 onready var world : Node = get_parent()
-onready var dead : Area2D = get_parent().get_node("dead")
+
 
 #spawn_normal:
 var level : int = 1
@@ -35,7 +35,7 @@ var hole_y : int = 92
 #spawn_info:
 var were_am_i : int = 0
 var how_many : int = 3
-var obst : int = 1
+var obst : int = 0
 var spawnd : int = 0
 var dif : int = 0
 
@@ -73,42 +73,42 @@ func _process(delta):
 
 #give_spawn_values:
 func value(used : int):
+#
+#	#game_over:
+#	if stop == true:
+#		return
+#
+#	randomize()
+#
+#	#chose_to_drop_coins_or_not:
+#	var e = randi() % 4 + 1
+#
+#	match e:
+#		1:
+#			drop_coin = false
+#
+#		2:
+#			drop_coin = true
+#
+#		3:
+#			drop_coin = false
+#
+#		4:
+#			drop_coin = true
 	
-	#game_over:
-	if stop == true:
-		return
 	
-	randomize()
-	
-	#chose_to_drop_coins_or_not:
-	var e = randi() % 4 + 1
-	
-	match e:
-		1:
-			drop_coin = false
-	
-		2:
-			drop_coin = true
-	
-		3:
-			drop_coin = false
-	
-		4:
-			drop_coin = true
-	
-	
-	#chose_a_hole_tybe:
-	var r = randi() % 3 + 1
-	
-	match r:
-		1:
-			hole = 7
-		
-		2:
-			hole = 9
-		
-		3:
-			hole = 10
+#	#chose_a_hole_tybe:
+#	var r = randi() % 3 + 1
+#
+#	match r:
+#		1:
+#			hole = 7
+#
+#		2:
+#			hole = 9
+#
+#		3:
+#			hole = 10
 	
 	
 	#diculty:
@@ -119,19 +119,17 @@ func value(used : int):
 		
 		#camera_speed:
 		world.camera_speed = 300
-		dead.speed = 298
 		
 		#how_many_tiles:
 		how_many = 4
 		
 		#how_many_obstcals:
-		obst = 1
+		obst = 0
 	
 	elif dif == 1:
 		
 		#camera_speed:
 		world.camera_speed = 400
-		dead.speed = 398
 		
 		#how_many_tiles:
 		how_many = 3
@@ -147,7 +145,6 @@ func value(used : int):
 		
 		#camera_speed:
 		world.camera_speed = 450
-		dead.speed = 448
 		
 		#how_many_tiles:
 		how_many = 2
@@ -162,7 +159,6 @@ func value(used : int):
 		
 		#camera_speed:
 		world.camera_speed = 500
-		dead.speed = 498
 		
 		#how_many_tiles:
 		how_many = 1
@@ -177,7 +173,6 @@ func value(used : int):
 		
 		#camera_speed:
 		world.camera_speed = 550
-		dead.speed = 548
 		
 		#how_many_tiles:
 		how_many = 1
@@ -988,13 +983,9 @@ func _on_again_timeout():
 
 #difeculty:
 func _on_dif_timeout():
-	
-	if stop == true:
-		return
-	
-	if dif >= 4:
-		$dif.stop()
-		return
-	
-	dif += 1
+#	if dif >= 4:
+#		$dif.stop()
+#		return
+#
+#	dif += 1
 	pass

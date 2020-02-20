@@ -1,19 +1,22 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset/inside.png" type="Texture" id=2]
 [ext_resource path="res://godot_stuff/tile_set.tres" type="TileSet" id=3]
 [ext_resource path="res://scripts/camera_trans.gd" type="Script" id=4]
 [ext_resource path="res://scripts/game_spawner.gd" type="Script" id=5]
-[ext_resource path="res://assets/charcter sprites/Test Icon 2.png" type="Texture" id=6]
+[ext_resource path="res://assets/charcter sprites/normal.png" type="Texture" id=6]
 [ext_resource path="res://scripts/player.gd" type="Script" id=7]
 [ext_resource path="res://scripts/dead_wall.gd" type="Script" id=8]
-[ext_resource path="res://assets/Audio/Music_menu.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/Audio/Music_level.ogg" type="AudioStream" id=9]
 [ext_resource path="res://assets/health/Heart.png" type="Texture" id=10]
 [ext_resource path="res://scripts/sccore.gd" type="Script" id=11]
 [ext_resource path="res://assets/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://scripts/save_system.gd" type="Script" id=13]
+[ext_resource path="res://assets/buttons/again.png" type="Texture" id=14]
+[ext_resource path="res://assets/buttons/exit.png" type="Texture" id=15]
 [ext_resource path="res://scripts/coins.gd" type="Script" id=16]
+[ext_resource path="res://assets/Audio/Player_death.wav" type="AudioStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 561.05, 10 )
@@ -22,6 +25,50 @@ extents = Vector2( 561.05, 10 )
 size = 30
 outline_size = 3
 font_data = ExtResource( 12 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "fade_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "gg"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 49, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 2.58359
@@ -183,6 +230,78 @@ position = Vector2( 132.511, 30.54 )
 scale = Vector2( 5.4608, 5.4608 )
 texture = ExtResource( 10 )
 
+[node name="lost" type="Node2D" parent="camera_trans/CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 49, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="again2" type="Label" parent="camera_trans/CanvasLayer/lost"]
+margin_left = 297.295
+margin_top = 210.009
+margin_right = 695.3
+margin_bottom = 240.009
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "AGAIN?"
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="again" type="Sprite" parent="camera_trans/CanvasLayer/lost"]
+position = Vector2( 402.631, 318.994 )
+scale = Vector2( 0.590909, 0.590909 )
+z_index = 10
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="exit_b" type="Button" parent="camera_trans/CanvasLayer/lost"]
+margin_left = 525.029
+margin_top = 250.0
+margin_right = 656.029
+margin_bottom = 388.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Sprite" parent="camera_trans/CanvasLayer/lost"]
+position = Vector2( 590.879, 319.034 )
+scale = Vector2( 0.575411, 0.601948 )
+z_index = 10
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="again_b" type="Button" parent="camera_trans/CanvasLayer/lost"]
+margin_left = 337.0
+margin_top = 250.0
+margin_right = 468.0
+margin_bottom = 388.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="camera_trans/CanvasLayer/lost"]
+anims/fade_out = SubResource( 6 )
+anims/gg = SubResource( 7 )
+
+[node name="fade" type="Sprite" parent="camera_trans/CanvasLayer/lost"]
+modulate = Color( 1, 0, 0, 0 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = 1200
+texture = ExtResource( 2 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="camera" type="Camera2D" parent="camera_trans"]
 position = Vector2( 0, 37.3933 )
 anchor_mode = 0
@@ -201,12 +320,18 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="wait" type="Timer" parent="camera_trans"]
+wait_time = 0.01
+one_shot = true
+autostart = true
+
 [node name="player" type="KinematicBody2D" parent="."]
-position = Vector2( 686.48, 276.098 )
+position = Vector2( 244.677, 434.307 )
 z_index = -2
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 slidness = 0.01
 
@@ -231,6 +356,8 @@ anims/hurt = SubResource( 5 )
 wait_time = 2.0
 one_shot = true
 
+[node name="Tween" type="Tween" parent="player"]
+
 [node name="tiles" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 128, 128 )
@@ -252,9 +379,23 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="sounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 17 )
+volume_db = -3.0
+attenuation = 0.00754638
 [connection signal="body_entered" from="dead" to="dead" method="_on_dead_body_entered"]
 [connection signal="timeout" from="game_spawner/again" to="game_spawner" method="_on_again_timeout"]
 [connection signal="timeout" from="game_spawner/dif" to="game_spawner" method="_on_dif_timeout"]
+[connection signal="mouse_entered" from="camera_trans/CanvasLayer/lost/exit_b" to="." method="_on_exit_b_mouse_entered"]
+[connection signal="mouse_exited" from="camera_trans/CanvasLayer/lost/exit_b" to="." method="_on_exit_b_mouse_exited"]
+[connection signal="pressed" from="camera_trans/CanvasLayer/lost/exit_b" to="." method="_on_exit_b_pressed"]
+[connection signal="mouse_entered" from="camera_trans/CanvasLayer/lost/again_b" to="." method="_on_again_b_mouse_entered"]
+[connection signal="mouse_exited" from="camera_trans/CanvasLayer/lost/again_b" to="." method="_on_again_b_mouse_exited"]
+[connection signal="pressed" from="camera_trans/CanvasLayer/lost/again_b" to="." method="_on_again_b_pressed"]
+[connection signal="animation_finished" from="camera_trans/CanvasLayer/lost/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="camera_trans/wait" to="camera_trans" method="_on_wait_timeout"]
 [connection signal="timeout" from="player/game_over" to="player" method="_on_game_over_timeout"]
 [connection signal="timeout" from="player/back_to_normal" to="player" method="_on_back_to_normal_timeout"]
 [connection signal="timeout" from="player/endr" to="player" method="_on_endr_timeout"]
+[connection signal="tween_completed" from="player/Tween" to="player" method="_on_Tween_tween_completed"]

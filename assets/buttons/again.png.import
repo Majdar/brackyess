@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Test Icon 2 Knight.png-1cd4d1b5b8665c726743ac5c767fb2cc.stex"
+path="res://.import/again.png-4ce17611d6316bfee84ddc8eea4638e0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/charcter sprites/Test Icon 2 Knight.png"
-dest_files=[ "res://.import/Test Icon 2 Knight.png-1cd4d1b5b8665c726743ac5c767fb2cc.stex" ]
+source_file="res://assets/buttons/again.png"
+dest_files=[ "res://.import/again.png-4ce17611d6316bfee84ddc8eea4638e0.stex" ]
 
 [params]
 

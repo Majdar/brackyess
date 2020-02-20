@@ -1,5 +1,11 @@
 extends KinematicBody2D
 
+#nodes:
+onready var spawner : Control = get_parent().get_node("game_spawner")
+onready var test : Node = get_parent()
+onready var camera_trans : KinematicBody2D = get_parent().get_node("camera_trans")
+onready var audio : AudioStreamPlayer = get_parent().get_node("AudioStreamPlayer")
+onready var sounds : AudioStreamPlayer = get_parent().get_node("sounds")
 
 #vars_phy:
 
@@ -155,16 +161,25 @@ func hurt():
 	
 	if hp <= 0:
 # warning-ignore:return_value_discarded
-		get_tree().reload_current_scene()
+		game_over()
 
 
 
 #game_over:
 func game_over():
 	$game_over.start()
+
 func _on_game_over_timeout():
-# warning-ignore:return_value_discarded
-	get_tree().reload_current_scene()
+	hp = 0
+	spawner.stop = true
+	test.camera_move = false
+	test.dead()
+	camera_trans.go = false
+	audio.stop()
+	sounds.play()
+	$Tween.interpolate_property(self, 'scale', scale, Vector2(0,0), 0.5,Tween.TRANS_CIRC,Tween.EASE_OUT )
+	$Tween.start()
+
 
 #holes_cause_problems:
 
@@ -199,3 +214,9 @@ func _on_endr_timeout():
 func coin():
 	
 	global.coins += 1
+
+
+# warning-ignore:unused_argument
+# warning-ignore:unused_argument
+func _on_Tween_tween_completed(object, key):
+	queue_free()

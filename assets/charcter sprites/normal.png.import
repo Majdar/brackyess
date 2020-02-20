@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Test Icon 2 Pirate.png-58ad36f22fbd365d240a63a7eef7640f.stex"
+path="res://.import/normal.png-751e6774d12dbf8e52a5b30b787de879.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/charcter sprites/Test Icon 2 Pirate.png"
-dest_files=[ "res://.import/Test Icon 2 Pirate.png-58ad36f22fbd365d240a63a7eef7640f.stex" ]
+source_file="res://assets/charcter sprites/normal.png"
+dest_files=[ "res://.import/normal.png-751e6774d12dbf8e52a5b30b787de879.stex" ]
 
 [params]
 

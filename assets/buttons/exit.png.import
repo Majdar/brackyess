@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Test Icon 2 ninja.png-d54c70b919714b5f6d12c5e7528d2fad.stex"
+path="res://.import/exit.png-3d13fdbe62f0b4b5059dad5dc142f2b4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/charcter sprites/Test Icon 2 ninja.png"
-dest_files=[ "res://.import/Test Icon 2 ninja.png-d54c70b919714b5f6d12c5e7528d2fad.stex" ]
+source_file="res://assets/buttons/exit.png"
+dest_files=[ "res://.import/exit.png-3d13fdbe62f0b4b5059dad5dc142f2b4.stex" ]
 
 [params]
 
