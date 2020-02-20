@@ -17,10 +17,5 @@ func _on_dead_body_entered(body):
 		body.game_over()
 
 
-func _on_bye_timeout():
-	queue_free()
 
-
-func _on_VisibilityNotifier2D_screen_entered():
-	$bye.start()
 
