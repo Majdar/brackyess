@@ -12,7 +12,7 @@ onready var h2 : Sprite = get_parent().get_node("camera_trans/CanvasLayer/health
 onready var h3 : Sprite = get_parent().get_node("camera_trans/CanvasLayer/health/3")
 
 #preloads:
-var empty : Texture = preload("res://assets/health/Empty Heart.png")
+var empty : Texture = preload("res://assets/health/Heart_empty.png")
 
 # warning-ignore:unused_argument
 func _process(delta):
