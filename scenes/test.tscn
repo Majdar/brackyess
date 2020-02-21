@@ -708,12 +708,14 @@ occluder = SubResource( 18 )
 light_mask = 1048575
 
 [node name="ghost" type="Timer" parent="player"]
+wait_time = 0.1
+one_shot = true
 
 [node name="Light2D2" type="Light2D" parent="player"]
 position = Vector2( 0.467091, 42.4675 )
 scale = Vector2( 1.34466, 0.869099 )
 texture = ExtResource( 21 )
-energy = 1.16
+energy = 0.7
 shadow_enabled = true
 
 [node name="tiles" type="TileMap" parent="."]

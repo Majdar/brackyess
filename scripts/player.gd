@@ -68,6 +68,10 @@ func _physics_process(delta):
 		$left.emitting = false
 		$right.emitting = false
 		
+		if once == false:
+			if motion.x > 500:
+				$ghost.start()
+				once = true
 	
 	#on_ground:
 	if is_on_floor():
@@ -272,9 +276,9 @@ func _on_Tween_tween_completed(object, key):
 
 
 func _on_ghost_timeout():
-			var ghost_b = ghost.instance()
-			get_parent().add_child(ghost_b)
-			ghost_b.global_position = global_position
-			ghost_b.texture = $Sprite.texture
-			ghost_b.rotation = rotation
-			once = false
+	var ghost_b = ghost.instance()
+	get_parent().add_child(ghost_b)
+	ghost_b.global_position = global_position
+	ghost_b.texture = $Sprite.texture
+	ghost_b.rotation_degrees = $Sprite.rotation_degrees
+	once = false
