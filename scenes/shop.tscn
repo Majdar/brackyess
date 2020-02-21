@@ -1,3 +1,710 @@
-[gd_scene format=2]
+[gd_scene load_steps=46 format=2]
+
+[ext_resource path="res://scripts/buttons.gd" type="Script" id=1]
+[ext_resource path="res://scenes/shop_t.gd" type="Script" id=2]
+[ext_resource path="res://scripts/start_scren_camera.gd" type="Script" id=3]
+[ext_resource path="res://scripts/start_scren_spawner.gd" type="Script" id=4]
+[ext_resource path="res://scenes/shop_save.gd" type="Script" id=5]
+[ext_resource path="res://assets/Audio/Music_shop.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/shaders/fog.shader" type="Shader" id=7]
+[ext_resource path="res://godot_stuff/tile_set.tres" type="TileSet" id=8]
+[ext_resource path="res://assets/tileset/inside.png" type="Texture" id=9]
+[ext_resource path="res://assets/shop/bordar.png" type="Texture" id=10]
+[ext_resource path="res://assets/charcter sprites/normal.png" type="Texture" id=11]
+[ext_resource path="res://assets/charcter sprites/cool guy.png" type="Texture" id=12]
+[ext_resource path="res://shop.gd" type="Script" id=13]
+[ext_resource path="res://custom.gd" type="Script" id=14]
+[ext_resource path="res://assets/charcter sprites/Knight.png" type="Texture" id=15]
+[ext_resource path="res://assets/charcter sprites/surgeon.png" type="Texture" id=16]
+[ext_resource path="res://assets/charcter sprites/astronaut.png" type="Texture" id=17]
+[ext_resource path="res://scenes/astro.gd" type="Script" id=18]
+[ext_resource path="res://assets/shop/select.png" type="Texture" id=19]
+[ext_resource path="res://scenes/cool.gd" type="Script" id=20]
+[ext_resource path="res://scenes/pirate.gd" type="Script" id=21]
+[ext_resource path="res://assets/charcter sprites/Pirate.png" type="Texture" id=22]
+[ext_resource path="res://scenes/knight.gd" type="Script" id=23]
+[ext_resource path="res://assets/shop/equiped.png" type="Texture" id=24]
+[ext_resource path="res://scenes/ninja.gd" type="Script" id=25]
+[ext_resource path="res://assets/charcter sprites/ninja.png" type="Texture" id=26]
+[ext_resource path="res://scenes/surg.gd" type="Script" id=27]
+[ext_resource path="res://assets/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=28]
+[ext_resource path="res://assets/Audio/Shop_enter.wav" type="AudioStream" id=29]
+[ext_resource path="res://assets/Audio/Menu_click.wav" type="AudioStream" id=30]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 2.58359
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 7 )
+shader_param/color = Vector3( 0.35, 0.48, 0.95 )
+shader_param/OCTAVES = 4
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+outline_size = 2
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 28
+outline_size = 2
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 100
+outline_size = 2
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 28
+outline_size = 2
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 23
+outline_size = 2
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+outline_size = 2
+font_data = ExtResource( 28 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_in"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.321569, 0.321569, 0.321569, 1 ), Color( 0.321569, 0.321569, 0.321569, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("buttonss:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 102.096, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("buttonss:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.321569, 0.321569, 0.321569, 0 ), Color( 0.321569, 0.321569, 0.321569, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+outline_size = 2
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 28
+outline_size = 2
+font_data = ExtResource( 28 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 40
+outline_size = 2
+font_data = ExtResource( 28 )
+
+[sub_resource type="Animation" id=13]
+resource_name = "fade_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "fade_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ) ]
+}
 
 [node name="shop" type="Node"]
+
+[node name="test" type="Node" parent="."]
+script = ExtResource( 2 )
+camera_move = true
+
+[node name="game_spawner" type="Control" parent="test"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="again" type="Timer" parent="test/game_spawner"]
+wait_time = 0.01
+one_shot = true
+
+[node name="dif" type="Timer" parent="test/game_spawner"]
+wait_time = 5.0
+autostart = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="test"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="test/ParallaxBackground"]
+motion_mirroring = Vector2( 1024, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bg" type="Sprite" parent="test/ParallaxBackground/ParallaxLayer"]
+modulate = Color( 1, 0, 0, 1 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -1
+texture = ExtResource( 9 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="camera_trans" type="KinematicBody2D" parent="test"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="camera" type="Camera2D" parent="test/camera_trans"]
+position = Vector2( 0, 37.3933 )
+anchor_mode = 0
+current = true
+process_mode = 0
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="test/camera_trans"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="tiles" type="TileMap" parent="test"]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 262144, 0, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 2, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="test"]
+stream = ExtResource( 6 )
+volume_db = -7.0
+autoplay = true
+
+[node name="save_system" type="Control" parent="test"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="test"]
+
+[node name="fog" type="Sprite" parent="test/CanvasLayer"]
+modulate = Color( 0.321569, 0.321569, 0.321569, 1 )
+material = SubResource( 2 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -1
+texture = ExtResource( 9 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bg3" type="Sprite" parent="test/CanvasLayer"]
+position = Vector2( 345.323, 362.795 )
+scale = Vector2( 1.53, 1.53 )
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bg2" type="Sprite" parent="test/CanvasLayer"]
+position = Vector2( 522.799, 362.795 )
+scale = Vector2( 1.53, 1.53 )
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bg" type="Sprite" parent="test/CanvasLayer"]
+position = Vector2( 679.698, 362.795 )
+scale = Vector2( 1.53, 1.53 )
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="coins" type="Label" parent="test/CanvasLayer"]
+margin_left = 138.684
+margin_top = 315.345
+margin_right = 288.684
+margin_bottom = 345.345
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "COINS"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="price" type="Label" parent="test/CanvasLayer"]
+margin_left = 309.776
+margin_top = 422.19
+margin_right = 459.776
+margin_bottom = 452.19
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "PRICE"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="shop_name" type="Label" parent="test/CanvasLayer"]
+margin_left = 292.738
+margin_top = 27.1128
+margin_right = 692.738
+margin_bottom = 127.113
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "SHOP"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="p" type="Label" parent="test/CanvasLayer"]
+margin_left = 309.0
+margin_top = 463.176
+margin_right = 449.0
+margin_bottom = 505.176
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.847059, 0.894118, 0.0509804, 1 )
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="equiped" type="Label" parent="test/CanvasLayer"]
+margin_left = 132.512
+margin_top = 170.931
+margin_right = 293.512
+margin_bottom = 193.931
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "EQUIPED"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="c" type="Label" parent="test/CanvasLayer"]
+margin_left = 138.684
+margin_top = 368.592
+margin_right = 288.684
+margin_bottom = 398.592
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.913725, 0.913725, 0.0470588, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="buttons" type="Control" parent="test/CanvasLayer"]
+margin_left = 93.6838
+margin_top = 73.2956
+margin_right = 133.684
+margin_bottom = 113.296
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="buttonss" type="Node2D" parent="test/CanvasLayer/buttons"]
+modulate = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="test/CanvasLayer/buttons"]
+anims/fade_in = SubResource( 3 )
+anims/fade_out = SubResource( 4 )
+
+[node name="fade" type="Sprite" parent="test/CanvasLayer/buttons"]
+visible = false
+modulate = Color( 0.321569, 0.321569, 0.321569, 1 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = 5
+texture = ExtResource( 9 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="shop" type="Control" parent="test/CanvasLayer"]
+margin_left = 93.6838
+margin_top = 73.2956
+margin_right = 133.684
+margin_bottom = 113.296
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="buy" type="Button" parent="test/CanvasLayer/shop"]
+margin_left = 219.414
+margin_top = 101.679
+margin_right = 351.414
+margin_bottom = 147.679
+focus_mode = 0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.72549, 0.654902, 0.654902, 0.533333 )
+custom_colors/font_color_pressed = Color( 0.713726, 0.643137, 0.643137, 0.839216 )
+enabled_focus_mode = 0
+text = "BUY"
+flat = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="eq" type="Button" parent="test/CanvasLayer/shop"]
+margin_left = 207.033
+margin_top = 232.517
+margin_right = 369.033
+margin_bottom = 278.517
+focus_mode = 0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.72549, 0.654902, 0.654902, 0.533333 )
+custom_colors/font_color_pressed = Color( 0.713726, 0.643137, 0.643137, 0.839216 )
+enabled_focus_mode = 0
+text = "EQUIP"
+flat = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="e" type="Sprite" parent="test/CanvasLayer/shop"]
+position = Vector2( 713.117, -252.799 )
+scale = Vector2( 2.54895, 2.54895 )
+texture = ExtResource( 24 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="select" type="Sprite" parent="test/CanvasLayer/shop"]
+position = Vector2( 501.657, -251.088 )
+scale = Vector2( 2.43191, 2.43191 )
+texture = ExtResource( 19 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="normal" type="Button" parent="test/CanvasLayer/shop"]
+anchor_top = -0.0193443
+anchor_bottom = -0.0193443
+margin_left = 396.207
+margin_top = 90.0929
+margin_right = 499.207
+margin_bottom = 191.093
+focus_mode = 0
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="test/CanvasLayer/shop/normal"]
+position = Vector2( 51.3323, 49.5668 )
+scale = Vector2( 1.58258, 1.58258 )
+texture = ExtResource( 11 )
+
+[node name="pos" type="Position2D" parent="test/CanvasLayer/shop/normal"]
+position = Vector2( 52.3749, 48.8539 )
+
+[node name="astro" type="Button" parent="test/CanvasLayer/shop"]
+anchor_top = -0.0193443
+anchor_bottom = -0.0193443
+margin_left = 524.003
+margin_top = 90.0929
+margin_right = 627.003
+margin_bottom = 191.093
+focus_mode = 0
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+price = 50
+
+[node name="Sprite" type="Sprite" parent="test/CanvasLayer/shop/astro"]
+position = Vector2( 51.3323, 49.5668 )
+scale = Vector2( 1.58258, 1.58258 )
+texture = ExtResource( 17 )
+
+[node name="pos" type="Position2D" parent="test/CanvasLayer/shop/astro"]
+position = Vector2( 52.3749, 48.8539 )
+
+[node name="cool" type="Button" parent="test/CanvasLayer/shop"]
+anchor_top = -0.0193443
+anchor_bottom = -0.0193443
+margin_left = 652.511
+margin_top = 88.6962
+margin_right = 755.511
+margin_bottom = 189.696
+focus_mode = 0
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+price = 100
+
+[node name="Sprite" type="Sprite" parent="test/CanvasLayer/shop/cool"]
+position = Vector2( 51.3323, 49.5668 )
+scale = Vector2( 1.58258, 1.58258 )
+texture = ExtResource( 12 )
+
+[node name="pos" type="Position2D" parent="test/CanvasLayer/shop/cool"]
+position = Vector2( 52.3749, 48.8539 )
+
+[node name="pirate" type="Button" parent="test/CanvasLayer/shop"]
+anchor_top = -0.0193443
+anchor_bottom = -0.0193443
+margin_left = 652.511
+margin_top = 226.268
+margin_right = 755.511
+margin_bottom = 327.268
+focus_mode = 0
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+price = 100
+
+[node name="Sprite" type="Sprite" parent="test/CanvasLayer/shop/pirate"]
+position = Vector2( 51.3323, 49.5668 )
+scale = Vector2( 1.58258, 1.58258 )
+texture = ExtResource( 22 )
+
+[node name="pos" type="Position2D" parent="test/CanvasLayer/shop/pirate"]
+position = Vector2( 52.3749, 48.8539 )
+
+[node name="knight" type="Button" parent="test/CanvasLayer/shop"]
+anchor_top = -0.0193443
+anchor_bottom = -0.0193443
+margin_left = 522.621
+margin_top = 225.388
+margin_right = 625.621
+margin_bottom = 326.388
+focus_mode = 0
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+price = 100
+
+[node name="Sprite" type="Sprite" parent="test/CanvasLayer/shop/knight"]
+position = Vector2( 51.3323, 49.5668 )
+scale = Vector2( 1.58258, 1.58258 )
+texture = ExtResource( 15 )
+
+[node name="pos" type="Position2D" parent="test/CanvasLayer/shop/knight"]
+position = Vector2( 52.3749, 48.8539 )
+
+[node name="ninja" type="Button" parent="test/CanvasLayer/shop"]
+anchor_top = -0.0193443
+anchor_bottom = -0.0193443
+margin_left = 396.572
+margin_top = 224.518
+margin_right = 499.572
+margin_bottom = 325.518
+focus_mode = 0
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+price = 100
+
+[node name="Sprite" type="Sprite" parent="test/CanvasLayer/shop/ninja"]
+position = Vector2( 51.3323, 49.5668 )
+scale = Vector2( 1.58258, 1.58258 )
+texture = ExtResource( 26 )
+
+[node name="pos" type="Position2D" parent="test/CanvasLayer/shop/ninja"]
+position = Vector2( 52.3749, 48.8539 )
+
+[node name="surg" type="Button" parent="test/CanvasLayer/shop"]
+anchor_top = -0.0193443
+anchor_bottom = -0.0193443
+margin_left = 396.572
+margin_top = 362.167
+margin_right = 499.572
+margin_bottom = 463.167
+focus_mode = 0
+enabled_focus_mode = 0
+expand_icon = true
+script = ExtResource( 27 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+price = 100
+
+[node name="Sprite" type="Sprite" parent="test/CanvasLayer/shop/surg"]
+position = Vector2( 51.3323, 49.5668 )
+scale = Vector2( 1.58258, 1.58258 )
+texture = ExtResource( 16 )
+
+[node name="pos" type="Position2D" parent="test/CanvasLayer/shop/surg"]
+position = Vector2( 52.3749, 48.8539 )
+
+[node name="click" type="AudioStreamPlayer" parent="test/CanvasLayer/shop"]
+stream = ExtResource( 30 )
+volume_db = -6.0
+
+[node name="E" type="Sprite" parent="test/CanvasLayer"]
+position = Vector2( 207.574, 243.867 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="fade" type="Sprite" parent="test/CanvasLayer"]
+modulate = Color( 1, 0, 0, 0 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = 100
+texture = ExtResource( 9 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="back" type="Button" parent="test/CanvasLayer"]
+margin_left = 4.10001
+margin_top = 7.0
+margin_right = 176.1
+margin_bottom = 53.0
+focus_mode = 0
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.639216, 0.619608, 0.619608, 0.647059 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 0.521569 )
+enabled_focus_mode = 0
+text = "BACK"
+flat = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="test/CanvasLayer"]
+anims/fade_in = SubResource( 13 )
+anims/fade_out = SubResource( 14 )
+
+[node name="open" type="AudioStreamPlayer" parent="test"]
+stream = ExtResource( 29 )
+volume_db = -7.0
+[connection signal="timeout" from="test/game_spawner/again" to="test/game_spawner" method="_on_again_timeout"]
+[connection signal="timeout" from="test/game_spawner/dif" to="test/game_spawner" method="_on_dif_timeout"]
+[connection signal="animation_finished" from="test/CanvasLayer/buttons/AnimationPlayer" to="test/CanvasLayer/buttons" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="test/CanvasLayer/shop/buy" to="test/CanvasLayer/shop" method="_on_buy_pressed"]
+[connection signal="pressed" from="test/CanvasLayer/shop/eq" to="test/CanvasLayer/shop" method="_on_eq_pressed"]
+[connection signal="pressed" from="test/CanvasLayer/shop/normal" to="test/CanvasLayer/shop/normal" method="_on_normal_pressed"]
+[connection signal="pressed" from="test/CanvasLayer/shop/astro" to="test/CanvasLayer/shop/astro" method="_on_normal_pressed"]
+[connection signal="pressed" from="test/CanvasLayer/shop/cool" to="test/CanvasLayer/shop/cool" method="_on_normal_pressed"]
+[connection signal="pressed" from="test/CanvasLayer/shop/pirate" to="test/CanvasLayer/shop/pirate" method="_on_normal_pressed"]
+[connection signal="pressed" from="test/CanvasLayer/shop/knight" to="test/CanvasLayer/shop/knight" method="_on_normal_pressed"]
+[connection signal="pressed" from="test/CanvasLayer/shop/ninja" to="test/CanvasLayer/shop/ninja" method="_on_normal_pressed"]
+[connection signal="pressed" from="test/CanvasLayer/shop/surg" to="test/CanvasLayer/shop/surg" method="_on_normal_pressed"]
+[connection signal="pressed" from="test/CanvasLayer/back" to="test" method="_on_back_pressed"]
+[connection signal="animation_finished" from="test/CanvasLayer/AnimationPlayer" to="test" method="_on_AnimationPlayer_animation_finished"]

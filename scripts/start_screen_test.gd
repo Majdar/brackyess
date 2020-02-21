@@ -12,6 +12,7 @@ var were : String
 #func_ready:
 func _ready():
 	
+	
 	pass
 
 #func_phyices:
@@ -20,16 +21,6 @@ func _physics_process(delta):
 	
 	$camera_trans.move_and_slide($camera_trans.motion)
 	$camera_trans.motion.x = camera_speed 
-
-
-
-
-
-
-
-
-
-
 
 
 

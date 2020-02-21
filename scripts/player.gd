@@ -6,6 +6,7 @@ onready var test : Node = get_parent()
 onready var camera_trans : KinematicBody2D = get_parent().get_node("camera_trans")
 onready var audio : AudioStreamPlayer = get_parent().get_node("AudioStreamPlayer")
 onready var sounds : AudioStreamPlayer = get_parent().get_node("sounds")
+onready var save_system : Control = get_parent().get_node("save_system")
 
 #preloads:
 var ghost : PackedScene = preload("res://scenes/ghost.tscn")
@@ -33,6 +34,13 @@ var hp : int = 3
 var endr : bool = false
 
 #funcs:
+
+#ready:
+func _ready():
+	
+	$Sprite.texture = global.e_texture
+
+
 # warning-ignore:unused_argument
 func _physics_process(delta):
 	
@@ -202,6 +210,7 @@ func game_over():
 	$game_over.start()
 
 func _on_game_over_timeout():
+	
 	hp = 0
 	$CollisionShape2D.disabled = true
 	spawner.stop = true
@@ -211,6 +220,7 @@ func _on_game_over_timeout():
 	camera_trans.go = false
 	audio.stop()
 	$Tween.interpolate_property(self, 'scale', scale, Vector2(0,0), 0.5,Tween.TRANS_CIRC,Tween.EASE_OUT )
+	save_system.save()
 	$Tween.start()
 
 

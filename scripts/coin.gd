@@ -6,6 +6,7 @@ var is_in : bool = false
 func _on_coin_body_entered(body):
 	if body.name == "player":
 		body.coin()
+		$audio.play()
 		$AnimationPlayer.play("bye")
 
 # warning-ignore:unused_argument

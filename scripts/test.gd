@@ -40,11 +40,19 @@ func go():
 	camera_move = true
 
 func dead():
-	$camera_trans/CanvasLayer/lost/AnimationPlayer.play("gg")
+	
+	if global.high_score >= global.score:
+		$camera_trans/CanvasLayer/lost/AnimationPlayer.play("gg")
+	
+	elif global.high_score < global.score:
+		$camera_trans/CanvasLayer/high/score.text = str(global.score)
+		$camera_trans/CanvasLayer/high/AnimationPlayer2.play("new")
+		$hs.play()
 
 #buttons:
 func _on_again_b_pressed():
 	if go == true:
+		$click.play()
 		were = 'again'
 		$camera_trans/CanvasLayer/lost/AnimationPlayer.play("fade_out")
 		go = false
@@ -52,6 +60,7 @@ func _on_again_b_pressed():
 
 func _on_exit_b_pressed():
 	if go == true:
+		$click.play()
 		were = 'start'
 		$camera_trans/CanvasLayer/lost/AnimationPlayer.play("fade_out")
 		go = false
@@ -70,6 +79,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	
 	if anim_name == 'gg':
 		go = true
+
 
 
 func _on_again_b_mouse_entered():
@@ -97,3 +107,14 @@ func sound():
 		a.texture = empty
 		b.texture = empty
 		c.texture = empty
+
+
+func _on_new_score_timeout():
+	$camera_trans/CanvasLayer/high.modulate = Color(1, 1, 1, 0)
+	$camera_trans/CanvasLayer/lost/AnimationPlayer.play("gg")
+
+
+func _on_AnimationPlayer2_animation_finished(anim_name):
+	
+	if anim_name == 'new':
+		$new_score.start()

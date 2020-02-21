@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://scripts/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset/inside.png" type="Texture" id=2]
@@ -18,6 +18,8 @@
 [ext_resource path="res://scripts/coins.gd" type="Script" id=16]
 [ext_resource path="res://assets/Audio/Player_death.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/Audio/Player_jump.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/Audio/Highscore.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/Audio/Menu_click.wav" type="AudioStream" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 561.05, 10 )
@@ -27,7 +29,7 @@ size = 30
 outline_size = 3
 font_data = ExtResource( 12 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "fade_out"
 length = 0.3
 tracks/0/type = "value"
@@ -43,7 +45,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "gg"
 length = 0.2
 tracks/0/type = "value"
@@ -71,13 +73,139 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="Animation" id=5]
+resource_name = "new"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 79.42, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "new_score"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("../high:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 91.7391, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../high:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 49, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "new_score"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("../high:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 91.7391, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../high:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=10]
 radius = 2.58359
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 31.1829, 31.1553 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=12]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -93,20 +221,20 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.207843 ) ]
 }
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=13]
 offsets = PoolRealArray( 0, 0.674074, 1 )
 colors = PoolColorArray( 0.945313, 1, 0, 1, 0.968627, 1, 0.415686, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
+[sub_resource type="GradientTexture" id=14]
+gradient = SubResource( 13 )
 
-[sub_resource type="Curve" id=10]
+[sub_resource type="Curve" id=15]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.981013, 0.261364 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=11]
-curve = SubResource( 10 )
+[sub_resource type="CurveTexture" id=16]
+curve = SubResource( 15 )
 
-[sub_resource type="ParticlesMaterial" id=12]
+[sub_resource type="ParticlesMaterial" id=17]
 emission_shape = 2
 emission_box_extents = Vector3( 1.6, 1, 1 )
 flag_disable_z = true
@@ -114,8 +242,8 @@ gravity = Vector3( 0, 98, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
-scale_curve = SubResource( 11 )
-color_ramp = SubResource( 9 )
+scale_curve = SubResource( 16 )
+color_ramp = SubResource( 14 )
 
 [node name="test" type="Node"]
 script = ExtResource( 1 )
@@ -258,11 +386,49 @@ position = Vector2( 151.362, 32.2042 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 10 )
 
+[node name="high" type="Node2D" parent="camera_trans/CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 79.42, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="score" type="Label" parent="camera_trans/CanvasLayer/high"]
+margin_left = 411.826
+margin_top = 264.496
+margin_right = 561.827
+margin_bottom = 294.496
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="new_score" type="Label" parent="camera_trans/CanvasLayer/high"]
+margin_left = 275.909
+margin_top = 210.011
+margin_right = 695.909
+margin_bottom = 240.011
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "NEW HIGH SCORE"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="camera_trans/CanvasLayer/high"]
+anims/fade_out = SubResource( 3 )
+anims/gg = SubResource( 4 )
+anims/new = SubResource( 5 )
+anims/new_score = SubResource( 6 )
+
 [node name="lost" type="Node2D" parent="camera_trans/CanvasLayer"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 49, 0 )
 __meta__ = {
-"_edit_group_": true,
 "_edit_lock_": true
 }
 
@@ -318,10 +484,12 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="camera_trans/CanvasLayer/lost"]
-anims/fade_out = SubResource( 6 )
-anims/gg = SubResource( 7 )
+anims/fade_out = SubResource( 7 )
+anims/gg = SubResource( 8 )
+anims/new_score = SubResource( 9 )
 
 [node name="fade" type="Sprite" parent="camera_trans/CanvasLayer/lost"]
+visible = false
 modulate = Color( 1, 0, 0, 0 )
 scale = Vector2( 8.02112, 5.07647 )
 z_index = 1200
@@ -344,7 +512,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="camera_trans"]
-shape = SubResource( 3 )
+shape = SubResource( 10 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -366,7 +534,7 @@ volume_db = -9.0
 autoplay = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-shape = SubResource( 4 )
+shape = SubResource( 11 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -380,7 +548,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="anim" type="AnimationPlayer" parent="player"]
-anims/hurt = SubResource( 5 )
+anims/hurt = SubResource( 12 )
 
 [node name="endr" type="Timer" parent="player"]
 wait_time = 2.0
@@ -394,7 +562,7 @@ rotation = 1.57079
 emitting = false
 amount = 5
 lifetime = 0.8
-process_material = SubResource( 12 )
+process_material = SubResource( 17 )
 
 [node name="right" type="Particles2D" parent="player"]
 position = Vector2( 30.3832, 29.0748 )
@@ -402,7 +570,7 @@ rotation = -1.57079
 emitting = false
 amount = 20
 lifetime = 0.8
-process_material = SubResource( 12 )
+process_material = SubResource( 17 )
 
 [node name="Sprite" type="Sprite" parent="player"]
 texture = ExtResource( 6 )
@@ -437,9 +605,21 @@ __meta__ = {
 [node name="sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
 volume_db = -3.0
+
+[node name="new_score" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="hs" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+volume_db = -6.0
 [connection signal="body_entered" from="dead" to="dead" method="_on_dead_body_entered"]
 [connection signal="timeout" from="game_spawner/again" to="game_spawner" method="_on_again_timeout"]
 [connection signal="timeout" from="game_spawner/dif" to="game_spawner" method="_on_dif_timeout"]
+[connection signal="animation_finished" from="camera_trans/CanvasLayer/high/AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]
 [connection signal="mouse_entered" from="camera_trans/CanvasLayer/lost/exit_b" to="." method="_on_exit_b_mouse_entered"]
 [connection signal="mouse_exited" from="camera_trans/CanvasLayer/lost/exit_b" to="." method="_on_exit_b_mouse_exited"]
 [connection signal="pressed" from="camera_trans/CanvasLayer/lost/exit_b" to="." method="_on_exit_b_pressed"]
@@ -453,3 +633,4 @@ volume_db = -3.0
 [connection signal="timeout" from="player/endr" to="player" method="_on_endr_timeout"]
 [connection signal="tween_completed" from="player/Tween" to="player" method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="player/ghost" to="player" method="_on_ghost_timeout"]
+[connection signal="timeout" from="new_score" to="." method="_on_new_score_timeout"]

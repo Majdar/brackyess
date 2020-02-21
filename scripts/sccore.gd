@@ -13,6 +13,8 @@ func _physics_process(delta):
 		sccore = int(player.position.x / 2)
 	
 	text =  str(sccore)
+	global.score = sccore
+
 
 
 

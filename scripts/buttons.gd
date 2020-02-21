@@ -14,6 +14,7 @@ func _ready():
 func _on_start_pressed():
 	
 	if go == true:
+		$click.play()
 		to = 'start'
 		$AnimationPlayer.play("fade_out")
 		go = false
@@ -22,6 +23,7 @@ func _on_start_pressed():
 func _on_shop_pressed():
 	
 	if go == true:
+		$click.play()
 		to = 'shop'
 		$AnimationPlayer.play("fade_out")
 		go = false
@@ -30,6 +32,7 @@ func _on_shop_pressed():
 func _on_exit_pressed():
 	
 	if go == true:
+		$click.play()
 		to = 'exit'
 		$AnimationPlayer.play("fade_out")
 		go = false

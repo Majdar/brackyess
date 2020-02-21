@@ -1,15 +1,16 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scripts/start_screen_test.gd" type="Script" id=1]
 [ext_resource path="res://scripts/start_scren_camera.gd" type="Script" id=2]
 [ext_resource path="res://scripts/start_scren_spawner.gd" type="Script" id=3]
-[ext_resource path="res://scripts/save_system.gd" type="Script" id=4]
+[ext_resource path="res://start_window_save.gd" type="Script" id=4]
 [ext_resource path="res://godot_stuff/tile_set.tres" type="TileSet" id=5]
 [ext_resource path="res://assets/tileset/inside.png" type="Texture" id=6]
 [ext_resource path="res://assets/Audio/Music_menu.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/shaders/fog.shader" type="Shader" id=8]
 [ext_resource path="res://assets/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://scripts/buttons.gd" type="Script" id=10]
+[ext_resource path="res://assets/Audio/Menu_click.wav" type="AudioStream" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 2.58359
@@ -306,6 +307,10 @@ centered = false
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="click" type="AudioStreamPlayer" parent="test/CanvasLayer/buttons"]
+stream = ExtResource( 11 )
+volume_db = -6.0
 [connection signal="timeout" from="test/game_spawner/again" to="test/game_spawner" method="_on_again_timeout"]
 [connection signal="timeout" from="test/game_spawner/dif" to="test/game_spawner" method="_on_dif_timeout"]
 [connection signal="pressed" from="test/CanvasLayer/buttons/buttonss/start" to="test/CanvasLayer/buttons" method="_on_start_pressed"]
