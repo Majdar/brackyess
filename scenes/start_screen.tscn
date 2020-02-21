@@ -64,28 +64,28 @@ tracks/0/keys = {
 "values": [ Color( 0.321569, 0.321569, 0.321569, 1 ), Color( 0.321569, 0.321569, 0.321569, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("buttonss:position")
+tracks/1/path = NodePath("buttonss:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.6, 0.9 ),
+"times": PoolRealArray( 0.5, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 102.096, 0 ), Vector2( 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("buttonss:modulate")
+tracks/2/path = NodePath("buttonss:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.6, 0.9 ),
+"times": PoolRealArray( 0.5, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Vector2( 92.0803, 0 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -211,10 +211,6 @@ __meta__ = {
 
 [node name="buttonss" type="Node2D" parent="test/CanvasLayer/buttons"]
 modulate = Color( 1, 1, 1, 0 )
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="start" type="Button" parent="test/CanvasLayer/buttons/buttonss"]
 anchor_left = 8.92
@@ -294,6 +290,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="help" type="Button" parent="test/CanvasLayer/buttons/buttonss"]
+anchor_left = 8.92
+anchor_top = 2.504
+anchor_right = 16.12
+anchor_bottom = 4.604
+margin_left = 814.538
+margin_top = 21.7837
+margin_right = 1014.54
+margin_bottom = 71.7837
+focus_mode = 0
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.686275, 0.658824, 0.658824, 0.694118 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 0.219608 )
+enabled_focus_mode = 0
+text = "HELP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="test/CanvasLayer/buttons"]
 anims/fade_in = SubResource( 11 )
 anims/fade_out = SubResource( 12 )
@@ -316,4 +338,5 @@ volume_db = -6.0
 [connection signal="pressed" from="test/CanvasLayer/buttons/buttonss/start" to="test/CanvasLayer/buttons" method="_on_start_pressed"]
 [connection signal="pressed" from="test/CanvasLayer/buttons/buttonss/shop" to="test/CanvasLayer/buttons" method="_on_shop_pressed"]
 [connection signal="pressed" from="test/CanvasLayer/buttons/buttonss/exit" to="test/CanvasLayer/buttons" method="_on_exit_pressed"]
+[connection signal="pressed" from="test/CanvasLayer/buttons/buttonss/help" to="test/CanvasLayer/buttons" method="_on_help_pressed"]
 [connection signal="animation_finished" from="test/CanvasLayer/buttons/AnimationPlayer" to="test/CanvasLayer/buttons" method="_on_AnimationPlayer_animation_finished"]

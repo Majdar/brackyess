@@ -55,3 +55,18 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		
 		elif to == 'exit':
 			get_tree().quit()
+		
+		elif to == 'help':
+# warning-ignore:return_value_discarded
+			get_tree().change_scene("res://scenes/help.tscn")
+
+
+func _on_help_pressed():
+	
+	if go == true:
+		$click.play()
+		to = 'help'
+		$AnimationPlayer.play("fade_out")
+		go = false
+
+
