@@ -32,6 +32,7 @@ var in_air : bool = false
 #vars_player:
 var hp : int = 3
 var endr : bool = false
+var one : bool = false
 
 #funcs:
 
@@ -43,6 +44,11 @@ func _ready():
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
+	
+	if one == false:
+		if position.y > 700.788:
+			game_over()
+			one = true
 	
 	#partcles:
 	if is_on_floor():

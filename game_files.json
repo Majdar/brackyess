@@ -1,0 +1,11 @@
+[all]
+
+coins=480
+score=10479
+equ=Resource( "res://assets/charcter sprites/surgeon.png")
+astro=true
+knight=true
+cool=true
+surg=true
+ninja=true
+pirate=true

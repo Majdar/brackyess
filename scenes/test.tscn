@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://scripts/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset/inside.png" type="Texture" id=2]
@@ -20,6 +20,8 @@
 [ext_resource path="res://assets/Audio/Player_jump.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/Audio/Highscore.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/Audio/Menu_click.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/dicor/lighh.png" type="Texture" id=21]
+[ext_resource path="res://assets/dicor/box.png" type="Texture" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 561.05, 10 )
@@ -245,6 +247,9 @@ scale = 2.0
 scale_curve = SubResource( 16 )
 color_ramp = SubResource( 14 )
 
+[sub_resource type="OccluderPolygon2D" id=18]
+polygon = PoolVector2Array( 33.0874, 30.9146, -31.9395, 30.8878, -32.936, -33.0543, 32.8331, -33.3864 )
+
 [node name="test" type="Node"]
 script = ExtResource( 1 )
 camera_move = true
@@ -295,6 +300,83 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="first" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 0.8 )
+motion_mirroring = Vector2( 1024, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="box" type="Sprite" parent="ParallaxBackground/first"]
+modulate = Color( 0.396078, 0.396078, 0.396078, 0.254902 )
+position = Vector2( 773.114, 230.472 )
+scale = Vector2( 1.71533, 0.373648 )
+texture = ExtResource( 22 )
+
+[node name="box2" type="Sprite" parent="ParallaxBackground/first"]
+modulate = Color( 0.396078, 0.396078, 0.396078, 0.254902 )
+position = Vector2( 417.377, 119.669 )
+scale = Vector2( 1.71533, 0.373648 )
+texture = ExtResource( 22 )
+
+[node name="box3" type="Sprite" parent="ParallaxBackground/first"]
+modulate = Color( 0.396078, 0.396078, 0.396078, 0.254902 )
+position = Vector2( 473.362, 365.769 )
+scale = Vector2( 1.71533, 0.373648 )
+texture = ExtResource( 22 )
+
+[node name="first2" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.505882, 0.505882, 0.505882, 0.254902 )
+motion_scale = Vector2( 0.6, 0.6 )
+motion_mirroring = Vector2( 1024, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="box" type="Sprite" parent="ParallaxBackground/first2"]
+modulate = Color( 0.65098, 0.65098, 0.65098, 0.584314 )
+position = Vector2( 363.355, 236.887 )
+scale = Vector2( 1.23343, 0.268676 )
+texture = ExtResource( 22 )
+
+[node name="box2" type="Sprite" parent="ParallaxBackground/first2"]
+modulate = Color( 0.65098, 0.65098, 0.65098, 0.584314 )
+position = Vector2( 739.609, 421.753 )
+scale = Vector2( 1.28697, 0.280339 )
+texture = ExtResource( 22 )
+
+[node name="box3" type="Sprite" parent="ParallaxBackground/first2"]
+modulate = Color( 0.65098, 0.65098, 0.65098, 0.584314 )
+position = Vector2( 212.419, 300.453 )
+scale = Vector2( 1.28697, 0.28034 )
+texture = ExtResource( 22 )
+
+[node name="first3" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 0.505882, 0.505882, 0.505882, 0.254902 )
+motion_scale = Vector2( 0.4, 0.4 )
+motion_mirroring = Vector2( 1024, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="box" type="Sprite" parent="ParallaxBackground/first3"]
+modulate = Color( 0.505882, 0.505882, 0.505882, 0.254902 )
+position = Vector2( 453.272, 191.399 )
+scale = Vector2( 0.697983, 0.152041 )
+texture = ExtResource( 22 )
+
+[node name="box2" type="Sprite" parent="ParallaxBackground/first3"]
+modulate = Color( 0.505882, 0.505882, 0.505882, 0.254902 )
+position = Vector2( 748.571, 340.692 )
+scale = Vector2( 0.805072, 0.175368 )
+texture = ExtResource( 22 )
+
+[node name="box3" type="Sprite" parent="ParallaxBackground/first3"]
+modulate = Color( 0.505882, 0.505882, 0.505882, 0.254902 )
+position = Vector2( 158.875, 169.822 )
+scale = Vector2( 0.75153, 0.163705 )
+texture = ExtResource( 22 )
+
 [node name="camera_trans" type="KinematicBody2D" parent="."]
 script = ExtResource( 4 )
 __meta__ = {
@@ -315,6 +397,7 @@ text = "0"
 align = 1
 script = ExtResource( 11 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -343,6 +426,7 @@ text = "0"
 align = 1
 script = ExtResource( 16 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -390,7 +474,8 @@ texture = ExtResource( 10 )
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 79.42, 0 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="score" type="Label" parent="camera_trans/CanvasLayer/high"]
@@ -461,6 +546,7 @@ margin_top = 250.0
 margin_right = 656.029
 margin_bottom = 388.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -526,6 +612,10 @@ autostart = true
 position = Vector2( 244.677, 479.57 )
 z_index = -2
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 slidness = 0.01
 
 [node name="sound" type="AudioStreamPlayer" parent="player"]
@@ -578,7 +668,26 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Light2D" type="Light2D" parent="player/Sprite"]
+position = Vector2( -0.922836, 1.28342 )
+scale = Vector2( 1.82648, 1.79568 )
+texture = ExtResource( 21 )
+energy = 1.76
+shadow_enabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="player/Sprite"]
+light_mask = 1048575
+occluder = SubResource( 18 )
+light_mask = 1048575
+
 [node name="ghost" type="Timer" parent="player"]
+
+[node name="Light2D2" type="Light2D" parent="player"]
+position = Vector2( 0.467091, 42.4675 )
+scale = Vector2( 1.34466, 0.869099 )
+texture = ExtResource( 21 )
+energy = 1.16
+shadow_enabled = true
 
 [node name="tiles" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
