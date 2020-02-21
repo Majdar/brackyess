@@ -312,18 +312,27 @@ modulate = Color( 0.396078, 0.396078, 0.396078, 0.254902 )
 position = Vector2( 773.114, 230.472 )
 scale = Vector2( 1.71533, 0.373648 )
 texture = ExtResource( 22 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="box2" type="Sprite" parent="ParallaxBackground/first"]
 modulate = Color( 0.396078, 0.396078, 0.396078, 0.254902 )
 position = Vector2( 417.377, 119.669 )
 scale = Vector2( 1.71533, 0.373648 )
 texture = ExtResource( 22 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="box3" type="Sprite" parent="ParallaxBackground/first"]
 modulate = Color( 0.396078, 0.396078, 0.396078, 0.254902 )
 position = Vector2( 473.362, 365.769 )
 scale = Vector2( 1.71533, 0.373648 )
 texture = ExtResource( 22 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="first2" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color( 0.505882, 0.505882, 0.505882, 0.254902 )
@@ -338,18 +347,27 @@ modulate = Color( 0.65098, 0.65098, 0.65098, 0.584314 )
 position = Vector2( 363.355, 236.887 )
 scale = Vector2( 1.23343, 0.268676 )
 texture = ExtResource( 22 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="box2" type="Sprite" parent="ParallaxBackground/first2"]
 modulate = Color( 0.65098, 0.65098, 0.65098, 0.584314 )
 position = Vector2( 739.609, 421.753 )
 scale = Vector2( 1.28697, 0.280339 )
 texture = ExtResource( 22 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="box3" type="Sprite" parent="ParallaxBackground/first2"]
 modulate = Color( 0.65098, 0.65098, 0.65098, 0.584314 )
 position = Vector2( 212.419, 300.453 )
 scale = Vector2( 1.28697, 0.28034 )
 texture = ExtResource( 22 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="first3" type="ParallaxLayer" parent="ParallaxBackground"]
 modulate = Color( 0.505882, 0.505882, 0.505882, 0.254902 )
@@ -364,18 +382,27 @@ modulate = Color( 0.505882, 0.505882, 0.505882, 0.254902 )
 position = Vector2( 453.272, 191.399 )
 scale = Vector2( 0.697983, 0.152041 )
 texture = ExtResource( 22 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="box2" type="Sprite" parent="ParallaxBackground/first3"]
 modulate = Color( 0.505882, 0.505882, 0.505882, 0.254902 )
 position = Vector2( 748.571, 340.692 )
 scale = Vector2( 0.805072, 0.175368 )
 texture = ExtResource( 22 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="box3" type="Sprite" parent="ParallaxBackground/first3"]
 modulate = Color( 0.505882, 0.505882, 0.505882, 0.254902 )
 position = Vector2( 158.875, 169.822 )
 scale = Vector2( 0.75153, 0.163705 )
 texture = ExtResource( 22 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="camera_trans" type="KinematicBody2D" parent="."]
 script = ExtResource( 4 )

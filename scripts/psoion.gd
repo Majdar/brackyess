@@ -7,6 +7,7 @@ var is_in : bool = false
 func _on_psoion_body_entered(body):
 	if body.name == 'player':
 		$Sprite.texture = real_sprite
+		$AnimationPlayer.play("go")
 
 
 
