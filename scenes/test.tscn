@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://scripts/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset/inside.png" type="Texture" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://assets/Audio/Menu_click.wav" type="AudioStream" id=20]
 [ext_resource path="res://assets/dicor/lighh.png" type="Texture" id=21]
 [ext_resource path="res://assets/dicor/box.png" type="Texture" id=22]
+[ext_resource path="res://assets/Audio/song1.ogg" type="AudioStream" id=23]
+[ext_resource path="res://assets/Audio/space walk.ogg" type="AudioStream" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 561.05, 10 )
@@ -727,9 +729,15 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="audio1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-autoplay = true
+
+[node name="audio2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+volume_db = -3.0
+
+[node name="audio3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
 
 [node name="save_system" type="Control" parent="."]
 margin_right = 40.0

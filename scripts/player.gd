@@ -4,7 +4,9 @@ extends KinematicBody2D
 onready var spawner : Control = get_parent().get_node("game_spawner")
 onready var test : Node = get_parent()
 onready var camera_trans : KinematicBody2D = get_parent().get_node("camera_trans")
-onready var audio : AudioStreamPlayer = get_parent().get_node("AudioStreamPlayer")
+onready var audio : AudioStreamPlayer = get_parent().get_node("audio1")
+onready var audio2 : AudioStreamPlayer = get_parent().get_node("audio2")
+onready var audio3 : AudioStreamPlayer = get_parent().get_node("audio3")
 onready var sounds : AudioStreamPlayer = get_parent().get_node("sounds")
 onready var save_system : Control = get_parent().get_node("save_system")
 
@@ -229,6 +231,8 @@ func _on_game_over_timeout():
 	test.sound()
 	camera_trans.go = false
 	audio.stop()
+	audio2.stop()
+	audio3.stop()
 	$Tween.interpolate_property(self, 'scale', scale, Vector2(0,0), 0.5,Tween.TRANS_CIRC,Tween.EASE_OUT )
 	save_system.save()
 	$Tween.start()
@@ -238,7 +242,7 @@ func _on_game_over_timeout():
 
 #ice:
 func cold():
-	modulate = Color(0.5, 1, 1, 1)
+	modulate = Color(0.2, 1, 1, 1)
 	max_speed = 420
 	acc = 7
 	jump = - 450

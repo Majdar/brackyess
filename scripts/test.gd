@@ -15,9 +15,20 @@ onready var b = get_node("camera_trans/CanvasLayer/health/2")
 onready var c = get_node("camera_trans/CanvasLayer/health/3")
 var empty : Texture = preload("res://assets/health/Heart_empty.png")
 
+
+
 #func_ready:
 func _ready():
 	
+	randomize()
+	var d = randi() % 3 + 1
+	match d:
+		1:
+			$audio1.play()
+		2:
+			$audio2.play()
+		3:
+			$audio3.play()
 	pass
 
 #func_phyices:
