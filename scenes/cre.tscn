@@ -1,0 +1,286 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://scripts/start_screen_test.gd" type="Script" id=1]
+[ext_resource path="res://scripts/start_scren_camera.gd" type="Script" id=2]
+[ext_resource path="res://scripts/start_scren_spawner.gd" type="Script" id=3]
+[ext_resource path="res://start_window_save.gd" type="Script" id=4]
+[ext_resource path="res://assets/Audio/Menu_click.wav" type="AudioStream" id=5]
+[ext_resource path="res://godot_stuff/tile_set.tres" type="TileSet" id=6]
+[ext_resource path="res://assets/tileset/inside.png" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/shaders/fog.shader" type="Shader" id=9]
+[ext_resource path="res://scenes/HELP_BU.gd" type="Script" id=10]
+[ext_resource path="res://assets/shop/bordar.png" type="Texture" id=11]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 2.58359
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 9 )
+shader_param/color = Vector3( 0.35, 0.48, 0.95 )
+shader_param/OCTAVES = 4
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.321569, 0.321569, 0.321569, 1 ), Color( 0.321569, 0.321569, 0.321569, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.321569, 0.321569, 0.321569, 0 ), Color( 0.321569, 0.321569, 0.321569, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 40
+outline_size = 2
+font_data = ExtResource( 8 )
+
+[node name="cre" type="Node"]
+
+[node name="help" type="Node" parent="."]
+
+[node name="test" type="Node" parent="help"]
+script = ExtResource( 1 )
+
+[node name="game_spawner" type="Control" parent="help/test"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="again" type="Timer" parent="help/test/game_spawner"]
+wait_time = 0.01
+one_shot = true
+
+[node name="dif" type="Timer" parent="help/test/game_spawner"]
+wait_time = 5.0
+autostart = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="help/test"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="help/test/ParallaxBackground"]
+motion_mirroring = Vector2( 1024, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bg" type="Sprite" parent="help/test/ParallaxBackground/ParallaxLayer"]
+modulate = Color( 1, 0, 0, 1 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -1
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="camera_trans" type="KinematicBody2D" parent="help/test"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="camera" type="Camera2D" parent="help/test/camera_trans"]
+position = Vector2( 0, 37.3933 )
+anchor_mode = 0
+current = true
+process_mode = 0
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="help/test/camera_trans"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="tiles" type="TileMap" parent="help/test"]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 262144, 0, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 2, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="save_system" type="Control" parent="help/test"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="help/test"]
+
+[node name="fog" type="Sprite" parent="help/test/CanvasLayer"]
+modulate = Color( 0.321569, 0.321569, 0.321569, 1 )
+material = SubResource( 2 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -1
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="buttons" type="Control" parent="help/test/CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="fade" type="Sprite" parent="help/test/CanvasLayer/buttons"]
+modulate = Color( 0.321569, 0.321569, 0.321569, 1 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = 5
+texture = ExtResource( 7 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="click" type="AudioStreamPlayer" parent="help/test/CanvasLayer/buttons"]
+stream = ExtResource( 5 )
+volume_db = -6.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="help/test/CanvasLayer/buttons"]
+anims/fade_in = SubResource( 3 )
+anims/fade_out = SubResource( 4 )
+
+[node name="help" type="Control" parent="help/test/CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="bordar" type="Sprite" parent="help/test/CanvasLayer/help"]
+position = Vector2( 278.813, 259.005 )
+scale = Vector2( 1.54812, 1.15429 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="bordar2" type="Sprite" parent="help/test/CanvasLayer/help"]
+position = Vector2( 744.187, 338.432 )
+scale = Vector2( 1.54812, 1.68032 )
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="help/test/CanvasLayer/help"]
+margin_left = 62.0
+margin_top = 111.0
+margin_right = 498.0
+margin_bottom = 381.0
+custom_fonts/font = SubResource( 5 )
+text = "PROGRAMER:
+MAJD AR
+
+ART:
+SneakyMeatbllz
+MAJD AR
+
+MUSIC & AUDIO:
+SneakyMeatbllz"
+autowrap = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="help/test/CanvasLayer/help"]
+margin_left = 527.949
+margin_top = 110.808
+margin_right = 977.953
+margin_bottom = 440.808
+custom_fonts/font = SubResource( 6 )
+text = "SITE:
+OPEN GAME ART
+
+ART:
+COIN SPRITES
+BY:
+Bayat Games
+
+MUSIC:
+
+NOTHING2
+BY:
+PetterTheSturgeon
+
+SPACE WALK
+BY:
+Arthur"
+autowrap = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="back" type="Button" parent="help/test/CanvasLayer/help"]
+margin_left = -0.451779
+margin_top = 10.4222
+margin_right = 171.548
+margin_bottom = 56.4222
+focus_mode = 0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0.639216, 0.619608, 0.619608, 0.647059 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 0.521569 )
+enabled_focus_mode = 0
+text = "BACK"
+flat = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="help/test/game_spawner/again" to="help/test/game_spawner" method="_on_again_timeout"]
+[connection signal="timeout" from="help/test/game_spawner/dif" to="help/test/game_spawner" method="_on_dif_timeout"]
+[connection signal="animation_finished" from="help/test/CanvasLayer/buttons/AnimationPlayer" to="help/test/CanvasLayer/buttons" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="help/test/CanvasLayer/help/back" to="help/test/CanvasLayer/buttons" method="_on_back_pressed"]

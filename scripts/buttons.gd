@@ -59,6 +59,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		elif to == 'help':
 # warning-ignore:return_value_discarded
 			get_tree().change_scene("res://scenes/help.tscn")
+		
+		elif to == 'cre':
+# warning-ignore:return_value_discarded
+			get_tree().change_scene("res://scenes/cre.tscn")
 
 
 func _on_help_pressed():
@@ -70,3 +74,11 @@ func _on_help_pressed():
 		go = false
 
 
+
+
+func _on_credits_pressed():
+	if go == true:
+		$click.play()
+		to = 'cre'
+		$AnimationPlayer.play("fade_out")
+		go = false

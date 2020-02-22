@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://scripts/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset/inside.png" type="Texture" id=2]
@@ -24,9 +24,14 @@
 [ext_resource path="res://assets/dicor/box.png" type="Texture" id=22]
 [ext_resource path="res://assets/Audio/song1.ogg" type="AudioStream" id=23]
 [ext_resource path="res://assets/Audio/space walk.ogg" type="AudioStream" id=24]
+[ext_resource path="res://scenes/bonc.gd" type="Script" id=25]
+[ext_resource path="res://scenes/go_back.gd" type="Script" id=26]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 561.05, 10 )
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 1382.62, 45.955 )
+
+[sub_resource type="RectangleShape2D" id=19]
+extents = Vector2( 127.215, 5142.94 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -203,6 +208,9 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 561.05, 10 )
+
 [sub_resource type="CircleShape2D" id=10]
 radius = 2.58359
 
@@ -254,25 +262,30 @@ polygon = PoolVector2Array( 33.0874, 30.9146, -31.9395, 30.8878, -32.936, -33.05
 
 [node name="test" type="Node"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
 camera_move = true
 
-[node name="dead" type="Area2D" parent="."]
-position = Vector2( -153.657, 321.064 )
-rotation = 1.57079
-script = ExtResource( 8 )
+[node name="go_back" type="Area2D" parent="."]
+position = Vector2( 562.925, -1025.21 )
+script = ExtResource( 26 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="dead"]
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="go_back"]
+shape = SubResource( 20 )
+
+[node name="wait" type="Timer" parent="go_back"]
+one_shot = true
 
 [node name="game_spawner" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 5 )
 __meta__ = {
-"_edit_lock_": true,
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -283,6 +296,174 @@ one_shot = true
 [node name="dif" type="Timer" parent="game_spawner"]
 wait_time = 15.0
 autostart = true
+
+[node name="bonc" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bgbg" type="Node2D" parent="bonc"]
+position = Vector2( -321.801, 81.6821 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="bg2" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -4977.07 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg3" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -4328.14 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg4" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -3678.89 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg5" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -3040 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg6" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -2401.1 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg7" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -5538.22 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg8" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -6144.35 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg9" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -6704.61 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg10" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -7338.85 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg11" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -7967.23 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg12" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -8595.6 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg13" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -9218.1 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg14" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -9814.18 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg15" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -10430.8 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg16" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -11056.2 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bg17" type="Sprite" parent="bonc/bgbg"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 314.187, -11584.2 )
+scale = Vector2( 8.02112, 5.07647 )
+z_index = -5
+texture = ExtResource( 2 )
+centered = false
+
+[node name="cam" type="Camera2D" parent="bonc"]
+position = Vector2( 502.87, -10664 )
+limit_top = -11500
+limit_bottom = -1740
+
+[node name="w" type="StaticBody2D" parent="bonc"]
+position = Vector2( -118.859, -6506.05 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bonc/w"]
+shape = SubResource( 19 )
+
+[node name="w2" type="StaticBody2D" parent="bonc"]
+position = Vector2( 1146.47, -6520.02 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bonc/w2"]
+shape = SubResource( 19 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -626,6 +807,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="dead" type="Area2D" parent="camera_trans/camera"]
+position = Vector2( -152.657, 283.671 )
+rotation = 1.57079
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_trans/camera/dead"]
+shape = SubResource( 1 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="camera_trans"]
 shape = SubResource( 10 )
 __meta__ = {
@@ -638,12 +830,11 @@ one_shot = true
 autostart = true
 
 [node name="player" type="KinematicBody2D" parent="."]
-position = Vector2( 244.677, 479.57 )
+position = Vector2( 215.897, 476.152 )
 z_index = -2
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
+"_edit_group_": true
 }
 slidness = 0.01
 
@@ -763,7 +954,12 @@ volume_db = -8.0
 [node name="click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 20 )
 volume_db = -6.0
-[connection signal="body_entered" from="dead" to="dead" method="_on_dead_body_entered"]
+
+[node name="bo" type="Timer" parent="."]
+wait_time = 20.0
+autostart = true
+[connection signal="body_entered" from="go_back" to="go_back" method="_on_go_back_body_entered"]
+[connection signal="timeout" from="go_back/wait" to="go_back" method="_on_wait_timeout"]
 [connection signal="timeout" from="game_spawner/again" to="game_spawner" method="_on_again_timeout"]
 [connection signal="timeout" from="game_spawner/dif" to="game_spawner" method="_on_dif_timeout"]
 [connection signal="animation_finished" from="camera_trans/CanvasLayer/high/AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]
@@ -774,6 +970,7 @@ volume_db = -6.0
 [connection signal="mouse_exited" from="camera_trans/CanvasLayer/lost/again_b" to="." method="_on_again_b_mouse_exited"]
 [connection signal="pressed" from="camera_trans/CanvasLayer/lost/again_b" to="." method="_on_again_b_pressed"]
 [connection signal="animation_finished" from="camera_trans/CanvasLayer/lost/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="camera_trans/camera/dead" to="camera_trans/camera/dead" method="_on_dead_body_entered"]
 [connection signal="timeout" from="camera_trans/wait" to="camera_trans" method="_on_wait_timeout"]
 [connection signal="timeout" from="player/game_over" to="player" method="_on_game_over_timeout"]
 [connection signal="timeout" from="player/back_to_normal" to="player" method="_on_back_to_normal_timeout"]
@@ -781,3 +978,4 @@ volume_db = -6.0
 [connection signal="tween_completed" from="player/Tween" to="player" method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="player/ghost" to="player" method="_on_ghost_timeout"]
 [connection signal="timeout" from="new_score" to="." method="_on_new_score_timeout"]
+[connection signal="timeout" from="bo" to="game_spawner" method="_on_bo_timeout"]

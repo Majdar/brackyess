@@ -8,7 +8,6 @@ var coin : PackedScene = preload("res://scenes/coin.tscn")
 #nodes:
 onready var tiles : TileMap = get_parent().get_node("tiles")
 onready var world : Node = get_parent()
-onready var dead : Area2D = get_parent().get_node("dead")
 
 #spawn_normal:
 var level : int = 1
@@ -38,6 +37,7 @@ var how_many : int = 3
 var obst : int = 1
 var spawnd : int = 0
 var dif : int = 0
+var gold : bool = false
 
 #game_over:
 export var stop : bool = false
@@ -119,7 +119,6 @@ func value(used : int):
 		
 		#camera_speed:
 		world.camera_speed = 300
-		dead.speed = 298
 		
 		#how_many_tiles:
 		how_many = 4
@@ -131,7 +130,6 @@ func value(used : int):
 		
 		#camera_speed:
 		world.camera_speed = 400
-		dead.speed = 398
 		
 		#how_many_tiles:
 		how_many = 3
@@ -147,7 +145,6 @@ func value(used : int):
 		
 		#camera_speed:
 		world.camera_speed = 450
-		dead.speed = 448
 		
 		#how_many_tiles:
 		how_many = 2
@@ -162,7 +159,6 @@ func value(used : int):
 		
 		#camera_speed:
 		world.camera_speed = 500
-		dead.speed = 498
 		
 		#how_many_tiles:
 		how_many = 1
@@ -177,7 +173,6 @@ func value(used : int):
 		
 		#camera_speed:
 		world.camera_speed = 550
-		dead.speed = 548
 		
 		#how_many_tiles:
 		how_many = 1
@@ -509,7 +504,12 @@ func spawn():
 							
 							#posion:
 							elif hole == 10:
-								throw_p.hole_tybe = 3
+								if gold == true:
+									throw_p.hole_tybe = 4
+									gold = false
+								
+								else:
+									throw_p.hole_tybe = 3
 							
 						
 						3:
@@ -681,7 +681,12 @@ func spawn():
 							
 							#posion:
 							elif hole == 10:
-								throw_p.hole_tybe = 3
+								if gold == true:
+									throw_p.hole_tybe = 4
+									gold = false
+								
+								else:
+									throw_p.hole_tybe = 3
 						
 						
 						3:
@@ -998,3 +1003,7 @@ func _on_dif_timeout():
 	
 	dif += 1
 	pass
+
+
+func _on_bo_timeout():
+	gold = true

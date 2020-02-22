@@ -6,6 +6,7 @@ var dir : int = 1
 
 #vars_start:
 export var camera_move : bool = false
+var no_sl : bool = false
 var go : bool = false
 var were : String 
 
@@ -19,6 +20,7 @@ var empty : Texture = preload("res://assets/health/Heart_empty.png")
 
 #func_ready:
 func _ready():
+	
 	
 	randomize()
 	var d = randi() % 3 + 1
@@ -40,15 +42,23 @@ func _physics_process(delta):
 		$camera_trans.motion.x = camera_speed 
 		
 	elif camera_move == false:
-		$camera_trans.move_and_slide($camera_trans.motion)
-		camera_speed = lerp(camera_speed, 0, 0.05)
-		$camera_trans.motion.x = camera_speed 
+		
+		if no_sl == false:
+			$camera_trans.move_and_slide($camera_trans.motion)
+			camera_speed = lerp(camera_speed, 0, 0.05)
+			$camera_trans.motion.x = camera_speed 
+		
+		elif no_sl == true:
+			camera_speed = 0
+			$camera_trans.motion.x = camera_speed 
 
 
 #game_starts:
 # warning-ignore:function_conflicts_variable
 func go():
+	camera_speed = 300
 	camera_move = true
+	$game_spawner.stop = false
 
 func dead():
 	
@@ -129,3 +139,9 @@ func _on_AnimationPlayer2_animation_finished(anim_name):
 	
 	if anim_name == 'new':
 		$new_score.start()
+
+func stop():
+	no_sl = true
+	camera_move = false
+	$game_spawner.stop = false
+

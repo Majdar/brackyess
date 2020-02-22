@@ -17,4 +17,8 @@ func _on_VisibilityNotifier2D_screen_entered():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	if is_in == true:
-		queue_free()
+		$bye.start()
+
+
+func _on_bye_timeout():
+	queue_free()

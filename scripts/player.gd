@@ -224,7 +224,7 @@ func game_over():
 func _on_game_over_timeout():
 	
 	hp = 0
-	$CollisionShape2D.disabled = true
+	$CollisionShape2D.queue_free()
 	spawner.stop = true
 	test.camera_move = false
 	test.dead()
@@ -285,4 +285,5 @@ func _on_ghost_timeout():
 	ghost_b.global_position = global_position
 	ghost_b.texture = $Sprite.texture
 	ghost_b.rotation_degrees = $Sprite.rotation_degrees
+	ghost_b.scale = scale
 	once = false

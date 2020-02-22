@@ -5,6 +5,7 @@ extends Area2D
 onready var fire : PackedScene = preload("res://scenes/fire.tscn")
 onready var snow : PackedScene = preload("res://scenes/ice.tscn")
 onready var posion : PackedScene = preload("res://scenes/psoion.tscn")
+onready var gold : PackedScene = preload("res://scenes/gold.tscn")
 
 #vars_holes:
 var hole_tybe : int = 1
@@ -40,7 +41,14 @@ func again():
 		get_parent().add_child(fire_p)
 		fire_p.global_position = Vector2(position.x + 47, position.y + 42)
 		$go.start()
-
+	
+	#gold:
+	elif hole_tybe == 4:
+		$smell.emitting = true
+		var fire_p = gold.instance()
+		get_parent().add_child(fire_p)
+		fire_p.global_position = Vector2(position.x + 47, position.y + 42)
+		$go.start()
 
 func _on_VisibilityNotifier2D_screen_entered():
 	im_in = true
