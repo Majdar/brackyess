@@ -48,18 +48,18 @@ outline_size = 3
 outline_color = Color( 0.984314, 0.972549, 0.972549, 1 )
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=11]
 size = 30
 outline_size = 3
 outline_color = Color( 0.984314, 0.972549, 0.972549, 1 )
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=12]
 size = 20
 outline_size = 2
 font_data = ExtResource( 9 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.9
 tracks/0/type = "value"
 tracks/0/path = NodePath("fade:modulate")
@@ -98,7 +98,7 @@ tracks/2/keys = {
 "values": [ Vector2( 92.0803, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("fade:modulate")
@@ -341,7 +341,7 @@ custom_styles/pressed = SubResource( 4 )
 custom_styles/focus = SubResource( 5 )
 custom_styles/disabled = SubResource( 6 )
 custom_styles/normal = SubResource( 7 )
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.686275, 0.658824, 0.658824, 0.694118 )
@@ -357,7 +357,7 @@ margin_left = 4.0
 margin_top = 6.0
 margin_right = 424.0
 margin_bottom = 72.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "THIS GAME IS MADE BY:
 SneakyMeatbllz
@@ -367,8 +367,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="test/CanvasLayer/buttons"]
-anims/fade_in = SubResource( 12 )
-anims/fade_out = SubResource( 13 )
+anims/fade_in = SubResource( 13 )
+anims/fade_out = SubResource( 14 )
 
 [node name="fade" type="Sprite" parent="test/CanvasLayer/buttons"]
 modulate = Color( 0.321569, 0.321569, 0.321569, 1 )
