@@ -9,11 +9,13 @@ onready var audio2 : AudioStreamPlayer = get_parent().get_node("audio2")
 onready var audio3 : AudioStreamPlayer = get_parent().get_node("audio3")
 onready var sounds : AudioStreamPlayer = get_parent().get_node("sounds")
 onready var save_system : Control = get_parent().get_node("save_system")
+onready var lost : Control = get_parent().get_node("camera_trans/CanvasLayer/lost")
 
 #preloads:
 var ghost : PackedScene = preload("res://scenes/ghost.tscn")
 var once : bool = false
 
+var die_once : bool = false
 #vars_phy:
 
 #vectors:
@@ -223,19 +225,22 @@ func game_over():
 
 func _on_game_over_timeout():
 	
-	hp = 0
-	$CollisionShape2D.queue_free()
-	spawner.stop = true
-	test.camera_move = false
-	test.dead()
-	test.sound()
-	camera_trans.go = false
-	audio.stop()
-	audio2.stop()
-	audio3.stop()
-	$Tween.interpolate_property(self, 'scale', scale, Vector2(0,0), 0.5,Tween.TRANS_CIRC,Tween.EASE_OUT )
-	save_system.save()
-	$Tween.start()
+	if die_once == false:
+		hp = 0
+		$CollisionShape2D.queue_free()
+		spawner.stop = true
+		test.camera_move = false
+		test.dead()
+		test.sound()
+		camera_trans.go = false
+		audio.stop()
+		audio2.stop()
+		audio3.stop()
+		$Tween.interpolate_property(self, 'scale', scale, Vector2(0,0), 0.5,Tween.TRANS_CIRC,Tween.EASE_OUT )
+		save_system.save()
+		$Tween.start()
+		die_once = true
+		lost.go = true
 
 
 #holes_cause_problems:

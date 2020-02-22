@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://scripts/test.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset/inside.png" type="Texture" id=2]
@@ -26,20 +26,20 @@
 [ext_resource path="res://assets/Audio/space walk.ogg" type="AudioStream" id=24]
 [ext_resource path="res://scenes/bonc.gd" type="Script" id=25]
 [ext_resource path="res://scenes/go_back.gd" type="Script" id=26]
+[ext_resource path="res://scenes/lost.gd" type="Script" id=27]
 
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1382.62, 45.955 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 127.215, 5142.94 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 30
 outline_size = 3
 font_data = ExtResource( 12 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "fade_out"
+[sub_resource type="Animation" id=4]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("fade:modulate")
@@ -54,8 +54,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "gg"
+[sub_resource type="Animation" id=5]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -82,8 +81,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "new"
+[sub_resource type="Animation" id=6]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -110,8 +108,7 @@ tracks/1/keys = {
 "values": [ Vector2( 79.42, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "new_score"
+[sub_resource type="Animation" id=7]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("../high:position")
@@ -138,7 +135,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("fade:modulate")
@@ -153,7 +150,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 0, 0, 0 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -180,8 +177,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "new_score"
+[sub_resource type="Animation" id=10]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("../high:position")
@@ -208,16 +204,16 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 561.05, 10 )
 
-[sub_resource type="CircleShape2D" id=10]
+[sub_resource type="CircleShape2D" id=12]
 radius = 2.58359
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 31.1829, 31.1553 )
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=14]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -233,20 +229,20 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.207843 ) ]
 }
 
-[sub_resource type="Gradient" id=13]
+[sub_resource type="Gradient" id=15]
 offsets = PoolRealArray( 0, 0.674074, 1 )
 colors = PoolColorArray( 0.945313, 1, 0, 1, 0.968627, 1, 0.415686, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=14]
-gradient = SubResource( 13 )
+[sub_resource type="GradientTexture" id=16]
+gradient = SubResource( 15 )
 
-[sub_resource type="Curve" id=15]
+[sub_resource type="Curve" id=17]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.981013, 0.261364 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=16]
-curve = SubResource( 15 )
+[sub_resource type="CurveTexture" id=18]
+curve = SubResource( 17 )
 
-[sub_resource type="ParticlesMaterial" id=17]
+[sub_resource type="ParticlesMaterial" id=19]
 emission_shape = 2
 emission_box_extents = Vector3( 1.6, 1, 1 )
 flag_disable_z = true
@@ -254,10 +250,10 @@ gravity = Vector3( 0, 98, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 2.0
-scale_curve = SubResource( 16 )
-color_ramp = SubResource( 14 )
+scale_curve = SubResource( 18 )
+color_ramp = SubResource( 16 )
 
-[sub_resource type="OccluderPolygon2D" id=18]
+[sub_resource type="OccluderPolygon2D" id=20]
 polygon = PoolVector2Array( 33.0874, 30.9146, -31.9395, 30.8878, -32.936, -33.0543, 32.8331, -33.3864 )
 
 [node name="test" type="Node"]
@@ -267,6 +263,15 @@ __meta__ = {
 }
 camera_move = true
 
+[node name="save_system" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
 [node name="go_back" type="Area2D" parent="."]
 position = Vector2( 562.925, -1025.21 )
 script = ExtResource( 26 )
@@ -275,7 +280,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="go_back"]
-shape = SubResource( 20 )
+shape = SubResource( 1 )
 
 [node name="wait" type="Timer" parent="go_back"]
 one_shot = true
@@ -453,7 +458,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bonc/w"]
-shape = SubResource( 19 )
+shape = SubResource( 2 )
 
 [node name="w2" type="StaticBody2D" parent="bonc"]
 position = Vector2( 1146.47, -6520.02 )
@@ -463,7 +468,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bonc/w2"]
-shape = SubResource( 19 )
+shape = SubResource( 2 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -601,7 +606,7 @@ margin_left = 868.079
 margin_top = 10.0
 margin_right = 1018.08
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 align = 1
@@ -616,7 +621,7 @@ margin_left = 570.289
 margin_top = 9.79635
 margin_right = 968.294
 margin_bottom = 39.7963
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "score : "
 align = 1
@@ -630,7 +635,7 @@ margin_left = 865.0
 margin_top = 46.0
 margin_right = 1021.0
 margin_bottom = 76.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 align = 1
@@ -645,7 +650,7 @@ margin_left = 563.599
 margin_top = 45.879
 margin_right = 973.604
 margin_bottom = 75.879
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "coins : "
 align = 1
@@ -682,7 +687,7 @@ texture = ExtResource( 10 )
 
 [node name="high" type="Node2D" parent="camera_trans/CanvasLayer"]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 79.42, 0 )
+position = Vector2( 91.7391, 0 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -693,7 +698,7 @@ margin_left = 411.826
 margin_top = 264.496
 margin_right = 561.827
 margin_bottom = 294.496
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 align = 1
@@ -706,7 +711,7 @@ margin_left = 275.909
 margin_top = 210.011
 margin_right = 695.909
 margin_bottom = 240.011
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "NEW HIGH SCORE"
 align = 1
@@ -715,14 +720,15 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="camera_trans/CanvasLayer/high"]
-anims/fade_out = SubResource( 3 )
-anims/gg = SubResource( 4 )
-anims/new = SubResource( 5 )
-anims/new_score = SubResource( 6 )
+anims/fade_out = SubResource( 4 )
+anims/gg = SubResource( 5 )
+anims/new = SubResource( 6 )
+anims/new_score = SubResource( 7 )
 
 [node name="lost" type="Node2D" parent="camera_trans/CanvasLayer"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 49, 0 )
+script = ExtResource( 27 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -732,9 +738,37 @@ margin_left = 297.295
 margin_top = 210.009
 margin_right = 695.3
 margin_bottom = 240.009
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "AGAIN?"
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="enter" type="Label" parent="camera_trans/CanvasLayer/lost"]
+margin_left = 204.195
+margin_top = 400.959
+margin_right = 602.2
+margin_bottom = 430.959
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ENTER"
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="EXIT" type="Label" parent="camera_trans/CanvasLayer/lost"]
+margin_left = 392.295
+margin_top = 400.959
+margin_right = 790.3
+margin_bottom = 430.959
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "ESC"
 align = 1
 __meta__ = {
 "_edit_lock_": true,
@@ -780,12 +814,11 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="camera_trans/CanvasLayer/lost"]
-anims/fade_out = SubResource( 7 )
-anims/gg = SubResource( 8 )
-anims/new_score = SubResource( 9 )
+anims/fade_out = SubResource( 8 )
+anims/gg = SubResource( 9 )
+anims/new_score = SubResource( 10 )
 
 [node name="fade" type="Sprite" parent="camera_trans/CanvasLayer/lost"]
-visible = false
 modulate = Color( 1, 0, 0, 0 )
 scale = Vector2( 8.02112, 5.07647 )
 z_index = 1200
@@ -816,10 +849,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="camera_trans/camera/dead"]
-shape = SubResource( 1 )
+shape = SubResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="camera_trans"]
-shape = SubResource( 10 )
+shape = SubResource( 12 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -844,7 +877,7 @@ volume_db = -9.0
 autoplay = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-shape = SubResource( 11 )
+shape = SubResource( 13 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -858,7 +891,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="anim" type="AnimationPlayer" parent="player"]
-anims/hurt = SubResource( 12 )
+anims/hurt = SubResource( 14 )
 
 [node name="endr" type="Timer" parent="player"]
 wait_time = 2.0
@@ -872,7 +905,7 @@ rotation = 1.57079
 emitting = false
 amount = 5
 lifetime = 0.8
-process_material = SubResource( 17 )
+process_material = SubResource( 19 )
 
 [node name="right" type="Particles2D" parent="player"]
 position = Vector2( 30.3832, 29.0748 )
@@ -880,7 +913,7 @@ rotation = -1.57079
 emitting = false
 amount = 20
 lifetime = 0.8
-process_material = SubResource( 17 )
+process_material = SubResource( 19 )
 
 [node name="Sprite" type="Sprite" parent="player"]
 texture = ExtResource( 6 )
@@ -897,7 +930,7 @@ shadow_enabled = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="player/Sprite"]
 light_mask = 1048575
-occluder = SubResource( 18 )
+occluder = SubResource( 20 )
 light_mask = 1048575
 
 [node name="ghost" type="Timer" parent="player"]
@@ -929,15 +962,6 @@ volume_db = -6.0
 
 [node name="audio3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
-
-[node name="save_system" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 13 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
 
 [node name="sounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )

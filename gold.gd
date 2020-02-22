@@ -13,6 +13,7 @@ func _on_psoion_body_entered(body):
 
 
 
+
 func _on_VisibilityNotifier2D_screen_entered():
 	is_in = true
 
@@ -25,6 +26,8 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_bonc_body_entered(body):
 	
 	if body.name == 'player':
+		
+		$s/CollisionShape2D.disabled = false
 		
 		go_back.last_pos = Vector2(body.position.x + 92, - 10) 
 		

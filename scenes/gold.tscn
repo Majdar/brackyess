@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://gold.gd" type="Script" id=1]
 [ext_resource path="res://assets/holes/gold/gold.png" type="Texture" id=2]
@@ -26,6 +26,9 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 64.268, 54.7859 )
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 64.8894, 63.8296 )
+
 [node name="psoion" type="Area2D"]
 script = ExtResource( 1 )
 
@@ -51,6 +54,12 @@ shape = SubResource( 3 )
 [node name="bye" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true
+
+[node name="s" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="s"]
+shape = SubResource( 4 )
+disabled = true
 [connection signal="body_entered" from="." to="." method="_on_psoion_body_entered"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

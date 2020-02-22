@@ -86,6 +86,19 @@ func _on_exit_b_pressed():
 		$camera_trans/CanvasLayer/lost/AnimationPlayer.play("fade_out")
 		go = false
 
+func again():
+	if go == true:
+		$click.play()
+		were = 'again'
+		$camera_trans/CanvasLayer/lost/AnimationPlayer.play("fade_out")
+		go = false
+
+func exit():
+	if go == true:
+		$click.play()
+		were = 'start'
+		$camera_trans/CanvasLayer/lost/AnimationPlayer.play("fade_out")
+		go = false
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	
