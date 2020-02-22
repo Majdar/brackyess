@@ -734,7 +734,7 @@ stream = ExtResource( 9 )
 
 [node name="audio2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 23 )
-volume_db = -3.0
+volume_db = -6.0
 
 [node name="audio3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )

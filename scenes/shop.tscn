@@ -559,7 +559,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
-price = 100
+price = 150
 
 [node name="Sprite" type="Sprite" parent="test/CanvasLayer/shop/pirate"]
 position = Vector2( 51.3323, 49.5668 )
@@ -584,7 +584,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
-price = 100
+price = 200
 
 [node name="Sprite" type="Sprite" parent="test/CanvasLayer/shop/knight"]
 position = Vector2( 51.3323, 49.5668 )
@@ -609,7 +609,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
-price = 100
+price = 350
 
 [node name="Sprite" type="Sprite" parent="test/CanvasLayer/shop/ninja"]
 position = Vector2( 51.3323, 49.5668 )
@@ -634,7 +634,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
-price = 100
+price = 300
 
 [node name="Sprite" type="Sprite" parent="test/CanvasLayer/shop/surg"]
 position = Vector2( 51.3323, 49.5668 )

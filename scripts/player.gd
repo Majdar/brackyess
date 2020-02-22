@@ -71,7 +71,7 @@ func _physics_process(delta):
 		$right.emitting = false
 		
 		if once == false:
-			if motion.x > 500:
+			if motion.x >= 560 or motion.x <= -560:
 				$ghost.start()
 				once = true
 	
